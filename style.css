@@ -166,27 +166,34 @@ a{
   position:absolute;
   bottom:20px;
   right:20px;
-  background:rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.1);
   backdrop-filter:blur(14px);
-  border:1px solid rgba(255,255,255,0.2);
-  padding:14px 22px;
-  border-radius:22px;
+  border: 2px solid #ffcc00;
+  padding:18px 26px;
+  border-radius:24px;
   color:#fff;
-  box-shadow:0 10px 30px rgba(0,0,0,0.25);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  text-align: center;
 }
 
 .floating-badge small{
-  display:block;
-  color:#d9d9d9;
-  font-size:13px;
-  margin-bottom:4px;
+  display:inline-block;
+  color:#fff;
+  font-size:14px;
+  font-weight:900;
+  margin-bottom:12px;
+  border-bottom: 3px solid #ffcc00;
+  padding-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .floating-badge h4{
   margin:0;
-  font-size:28px;
-  font-weight:700;
+  font-size:46px;
+  font-weight:900;
   color:#00ff99;
+  line-height: 1;
 }
 
 /* =========================
@@ -194,7 +201,7 @@ a{
 ========================= */
 
 section{
-  padding:80px 0;
+  padding:20px 0;
 }
 
 .section-title{
