@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Smart Business Course</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<title>Smart Business Course</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-  <link rel="stylesheet" href="style.css">
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Custom Style -->
+<link rel="stylesheet" href="style.css">
 
 </head>
 <body>
 
-<!-- Navbar -->
+<!-- NAVBAR -->
 
 <nav class="navbar navbar-expand-lg">
 
@@ -61,17 +63,13 @@
 
       </ul>
 
-      <a href="#" class="btn btn-main ms-lg-4 mt-3 mt-lg-0">
-        এখনই এনরোল করুন
-      </a>
-
     </div>
 
   </div>
 
 </nav>
 
-<!-- Hero -->
+<!-- HERO -->
 
 <section class="hero">
 
@@ -121,6 +119,8 @@
 
         </div>
 
+        <!-- BUTTONS -->
+
         <div class="d-flex gap-3 flex-wrap mt-4 justify-content-center justify-content-lg-start">
 
           <a href="#" class="btn btn-main">
@@ -139,11 +139,14 @@
 
         <div class="hero-card">
 
-          <img src="images.jpg">
+          <img src="images.jpg" alt="Business Image">
 
           <div class="floating-badge">
+
             <small>Profit Ratio</small>
+
             <h4>25%</h4>
+
           </div>
 
         </div>
@@ -156,7 +159,7 @@
 
 </section>
 
-<!-- Features -->
+<!-- FEATURES -->
 
 <section>
 
@@ -166,75 +169,107 @@
       <h2>কেন এই বিজনেস শুরু করবেন?</h2>
     </div>
 
-    <div class="row g-4">
+    <!-- Desktop -->
+
+    <div class="row g-4 d-none d-md-flex">
 
       <div class="col-md-6 col-lg-3">
-
         <div class="feature-card">
-
           <div class="feature-icon">
             <i class="bi bi-clock-history"></i>
           </div>
-
           <h5>Long Term Business</h5>
-
-          <p>
-            দীর্ঘ সময় ধরে ব্যবসা পরিচালনা করা সম্ভব।
-          </p>
-
+          <p>দীর্ঘ সময় ধরে ব্যবসা পরিচালনা করা সম্ভব।</p>
         </div>
-
       </div>
 
       <div class="col-md-6 col-lg-3">
-
         <div class="feature-card">
-
           <div class="feature-icon">
             <i class="bi bi-people-fill"></i>
           </div>
-
           <h5>Repeat Customer</h5>
-
-          <p>
-            ৮০%+ কাস্টমার বারবার অর্ডার করে।
-          </p>
-
+          <p>৮০%+ কাস্টমার বারবার অর্ডার করে।</p>
         </div>
-
       </div>
 
       <div class="col-md-6 col-lg-3">
-
         <div class="feature-card">
-
           <div class="feature-icon">
             <i class="bi bi-wallet2"></i>
           </div>
-
           <h5>Low Investment</h5>
-
-          <p>
-            মাত্র ৩০০০ টাকা দিয়েই শুরু করা সম্ভব।
-          </p>
-
+          <p>মাত্র ৩০০০ টাকা দিয়েই শুরু করা সম্ভব।</p>
         </div>
-
       </div>
 
       <div class="col-md-6 col-lg-3">
-
         <div class="feature-card">
-
           <div class="feature-icon">
             <i class="bi bi-phone-fill"></i>
           </div>
-
           <h5>Work Anywhere</h5>
+          <p>শুধু মোবাইল দিয়েই ব্যবসা পরিচালনা সম্ভব।</p>
+        </div>
+      </div>
 
-          <p>
-            শুধু মোবাইল দিয়েই ব্যবসা পরিচালনা সম্ভব।
-          </p>
+    </div>
+
+    <!-- Mobile -->
+
+    <div class="d-block d-md-none">
+
+      <div class="mobile-combined-card">
+
+        <div class="mobile-item">
+
+          <div class="mobile-icon">
+            <i class="bi bi-clock-history"></i>
+          </div>
+
+          <div class="mobile-content">
+            <h5>Long Term Business</h5>
+            <p>দীর্ঘ সময় ধরে ব্যবসা পরিচালনা করা সম্ভব।</p>
+          </div>
+
+        </div>
+
+        <div class="mobile-item">
+
+          <div class="mobile-icon">
+            <i class="bi bi-people-fill"></i>
+          </div>
+
+          <div class="mobile-content">
+            <h5>Repeat Customer</h5>
+            <p>৮০%+ কাস্টমার বারবার অর্ডার করে।</p>
+          </div>
+
+        </div>
+
+        <div class="mobile-item">
+
+          <div class="mobile-icon">
+            <i class="bi bi-wallet2"></i>
+          </div>
+
+          <div class="mobile-content">
+            <h5>Low Investment</h5>
+            <p>মাত্র ৩০০০ টাকা দিয়েই শুরু করা সম্ভব।</p>
+          </div>
+
+        </div>
+
+        <div class="mobile-item">
+
+          <div class="mobile-icon">
+            <i class="bi bi-phone-fill"></i>
+          </div>
+
+          <div class="mobile-content">
+            <h5>Work Anywhere</h5>
+            <p>শুধু মোবাইল দিয়েই ব্যবসা পরিচালনা সম্ভব।</p>
+          </div>
 
         </div>
 
@@ -246,7 +281,7 @@
 
 </section>
 
-<!-- Packages -->
+<!-- PACKAGES -->
 
 <section>
 
@@ -256,75 +291,103 @@
       <h2>এই ৩০০০ টাকায় কী কী পাচ্ছেন?</h2>
     </div>
 
-    <div class="row g-4">
+    <!-- Desktop -->
+
+    <div class="row g-4 d-none d-md-flex">
 
       <div class="col-md-6 col-lg-3">
-
         <div class="package-card">
-
           <div class="package-number">01</div>
-
           <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png">
-
           <h4>Visa Card</h4>
-
-          <p>
-            10 USD = 1300 টাকা
-          </p>
-
+          <p>10 USD = 1300 টাকা</p>
         </div>
-
       </div>
 
       <div class="col-md-6 col-lg-3">
-
         <div class="package-card">
-
           <div class="package-number">02</div>
-
           <img src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png">
-
           <h4>Account Balance</h4>
-
-          <p>
-            5.5 USD = 700 টাকা
-          </p>
-
+          <p>5.5 USD = 700 টাকা</p>
         </div>
-
       </div>
 
       <div class="col-md-6 col-lg-3">
-
         <div class="package-card">
-
           <div class="package-number">03</div>
-
           <img src="https://cdn-icons-png.flaticon.com/512/888/888879.png">
-
           <h4>Android App</h4>
-
-          <p>
-            Outdoor থেকেও কাজ করা যাবে।
-          </p>
-
+          <p>Outdoor থেকেও কাজ করা যাবে।</p>
         </div>
-
       </div>
 
       <div class="col-md-6 col-lg-3">
-
         <div class="package-card">
-
           <div class="package-number">04</div>
-
           <img src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png">
-
           <h4>Website Code</h4>
+          <p>সম্পূর্ণ FREE Website Code।</p>
+        </div>
+      </div>
 
-          <p>
-            সম্পূর্ণ FREE Website Code।
-          </p>
+    </div>
+
+    <!-- Mobile -->
+
+    <div class="d-block d-md-none">
+
+      <div class="mobile-combined-card">
+
+        <div class="mobile-item">
+
+          <div class="mobile-icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png">
+          </div>
+
+          <div class="mobile-content">
+            <h5>Visa Card</h5>
+            <p>10 USD = 1300 টাকা</p>
+          </div>
+
+        </div>
+
+        <div class="mobile-item">
+
+          <div class="mobile-icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png">
+          </div>
+
+          <div class="mobile-content">
+            <h5>Account Balance</h5>
+            <p>5.5 USD = 700 টাকা</p>
+          </div>
+
+        </div>
+
+        <div class="mobile-item">
+
+          <div class="mobile-icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/888/888879.png">
+          </div>
+
+          <div class="mobile-content">
+            <h5>Android App</h5>
+            <p>Outdoor থেকেও কাজ করা যাবে।</p>
+          </div>
+
+        </div>
+
+        <div class="mobile-item">
+
+          <div class="mobile-icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png">
+          </div>
+
+          <div class="mobile-content">
+            <h5>Website Code</h5>
+            <p>সম্পূর্ণ FREE Website Code।</p>
+          </div>
 
         </div>
 
@@ -336,7 +399,7 @@
 
 </section>
 
-<!-- Course -->
+<!-- COURSE -->
 
 <section>
 
@@ -367,18 +430,22 @@
 
         <div class="col-lg-6">
 
-          <h2 class="fw-bold mb-4">
-            Refund Guarantee
-          </h2>
+          <div class="refund-card text-center">
 
-          <p class="fs-5 text-secondary">
-            Business Details দেখার পর Interested না হলে
-            সম্পূর্ণ টাকা Refund করে দেওয়া হবে।
-          </p>
+            <h2 class="fw-bold mb-4">
+              Refund Guarantee
+            </h2>
 
-          <a href="#" class="btn btn-main mt-3">
-            এখনই শুরু করুন
-          </a>
+            <p class="fs-5 text-secondary">
+              Business Details দেখার পর Interested না হলে
+              সম্পূর্ণ টাকা Refund করে দেওয়া হবে।
+            </p>
+
+            <a href="#" class="btn btn-main mt-3">
+              এখনই শুরু করুন
+            </a>
+
+          </div>
 
         </div>
 
@@ -417,7 +484,7 @@
 
 </section>
 
-<!-- Footer -->
+<!-- FOOTER -->
 
 <footer>
 
