@@ -1,0 +1,58 @@
+/* =========================
+   COMMON STYLES (IMPORTED FROM ROOT)
+========================= */
+
+@import url('../style.css');
+
+/* =========================
+   PAYMENT PAGE SPECIFIC
+========================= */
+
+.payment-box {
+  background: #fff;
+  border-radius: 35px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  border: 1px solid #eee;
+}
+
+.payment-info {
+  background: #fdfbff;
+  border-right: 1px solid #f0f0f0;
+}
+
+.step-item {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.step-count {
+  min-width: 32px;
+  height: 32px;
+  background: #7b2ff7;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.number-box {
+  background: #fff;
+  border: 1px dashed #7b2ff7;
+  border-radius: 18px;
+  padding: 15px;
+  width: 100%;
+}
+
+.payment-form-side {
+  background: #fff;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #7b2ff7;
+  box-shadow: 0 0 0 0.25rem rgba(123, 47, 247, 0.1);
+}
