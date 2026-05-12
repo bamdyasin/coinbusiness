@@ -123,9 +123,15 @@ a{
   background:rgba(255,255,255,0.05);
   border:1px solid rgba(255,255,255,0.08);
   border-radius:22px;
-  padding:22px;
+  padding:15px 10px;
   margin-top:35px;
   backdrop-filter:blur(12px);
+}
+
+.stats-item{
+  background:rgba(255,255,255,0.06);
+  border-radius:16px;
+  padding:15px 10px;
 }
 
 .stats-item h3{
@@ -451,16 +457,6 @@ footer{
     font-size:17px;
   }
 
-  .stats-card{
-    padding:18px 10px;
-  }
-
-  .stats-item{
-    background:rgba(255,255,255,0.06);
-    border-radius:16px;
-    padding:15px 10px;
-  }
-
   .hero-card{
     margin-top:20px;
     padding:18px;
@@ -528,6 +524,35 @@ footer{
 
   .mobile-content p{
     font-size:14px;
+  }
+
+  .course-list {
+    display: block;
+  }
+
+  .course-list li {
+    width: 88%;
+    color: #fff;
+    padding: 16px 15px;
+    border-radius: 18px;
+    font-size: 15px !important;
+    margin-bottom: 15px !important;
+    box-shadow: 0 8px 20px rgba(123, 47, 247, 0.2);
+    font-weight: 600;
+    display: flex;
+    border: none;
+  }
+
+  .course-list li:nth-child(odd) {
+    margin-right: auto;
+    background: linear-gradient(135deg, #7b2ff7, #2575fc);
+    border-right: 5px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .course-list li:nth-child(even) {
+    margin-left: auto;
+    background: linear-gradient(135deg, #6a11cb, #a737ff);
+    border-left: 5px solid rgba(255, 255, 255, 0.3);
   }
 
   .btn-main,
