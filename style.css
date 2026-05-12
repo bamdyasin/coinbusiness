@@ -1,187 +1,152 @@
 /* =========================
-   GAMING DARK THEME OVERHAUL
+   PROFESSIONAL GAMING UI (POLISHED)
 ========================= */
 
 @import url('landing/style.css');
 
 body {
-    background: #050505;
-    background-image: 
-        linear-gradient(rgba(123, 47, 247, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(123, 47, 247, 0.05) 1px, transparent 1px),
-        radial-gradient(circle at 50% 50%, #1a1a2e 0%, #050505 100%);
-    background-size: 50px 50px, 50px 50px, 100% 100%;
+    background: #0b0e11;
+    background: radial-gradient(circle at 0% 0%, #161a2e 0%, #0b0e11 100%);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     font-family: 'Hind Siliguri', sans-serif;
-    color: #fff;
+    color: #e2e8f0;
+    -webkit-font-smoothing: antialiased;
 }
 
 .navbar {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(11, 14, 17, 0.8);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(123, 47, 247, 0.3);
-}
-
-.navbar-brand {
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    background: linear-gradient(to right, #fff, #7b2ff7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .shop-container {
     flex: 1;
     display: flex;
     align-items: center;
-    padding: 80px 0;
+    padding: 100px 0;
 }
 
 /* =========================
-   PRO GAMING CARDS
+   ELEGANT SHOP CARDS
 ========================= */
 
 .shop-card {
     position: relative;
-    background: rgba(15, 15, 25, 0.7);
-    backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 30px;
-    padding: 40px 25px;
+    padding: 45px 30px;
     text-align: center;
-    transition: all 0.5s cubic-bezier(0.15, 0.83, 0.66, 1);
+    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
     height: 100%;
-    overflow: hidden;
 }
 
-/* Active Glow Effect */
+/* Active Highlight (Elegant Semi-Red) */
 .shop-card:not(.coming-soon) {
-    transform: translateY(-5px);
-    border-color: rgba(123, 47, 247, 0.4);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(123, 47, 247, 0.05);
+    transform: translateY(-10px);
+    background: linear-gradient(145deg, rgba(255, 59, 59, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border-color: rgba(255, 59, 59, 0.25);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
 .shop-card:hover {
-    transform: translateY(-15px) scale(1.04);
-    background: rgba(20, 20, 35, 0.8);
-    border-color: #7b2ff7;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(123, 47, 247, 0.3);
+    transform: translateY(-18px) scale(1.02);
+    background: linear-gradient(145deg, rgba(255, 59, 59, 0.15) 0%, rgba(255, 59, 59, 0.05) 100%);
+    border-color: rgba(255, 59, 59, 0.6);
+    box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 59, 59, 0.1);
 }
 
-/* Animated Border Ray */
-.shop-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #7b2ff7, transparent);
-    transition: 0.5s;
-}
-
-.shop-card:hover::after {
-    left: 100%;
-}
-
-/* =========================
-   GAMING ELEMENTS
-========================= */
-
+/* Icons Style */
 .card-icon {
-    width: 85px;
-    height: 85px;
-    background: #0d0d15;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 30px;
-    font-size: 38px;
+    font-size: 36px;
     color: #fff;
-    transition: 0.5s;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .shop-card:not(.coming-soon) .card-icon {
-    border-color: rgba(123, 47, 247, 0.5);
-    color: #7b2ff7;
+    background: rgba(255, 59, 59, 0.15);
+    color: #ff4d4d;
+    transform: rotate(6deg);
 }
 
 .shop-card:hover .card-icon {
-    transform: scale(1.15) rotate(5deg);
-    border-color: #7b2ff7;
-    background: #7b2ff7;
+    background: #ff3b3b;
     color: #fff;
-    box-shadow: 0 0 30px rgba(123, 47, 247, 0.5);
+    transform: rotate(0deg) scale(1.15);
+    box-shadow: 0 15px 30px rgba(255, 59, 59, 0.3);
 }
 
 .shop-card h5 {
-    font-weight: 800;
+    font-weight: 700;
     margin-bottom: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    color: #fff;
+    font-size: 22px;
 }
 
 .shop-card p {
+    font-size: 15px;
     color: rgba(255, 255, 255, 0.4);
-    font-size: 13px;
+    margin-bottom: 30px;
     font-weight: 500;
 }
 
+/* Button Refinement */
 .btn-shop {
-    margin-top: 25px;
-    background: #1a1a2e;
-    border: 1px solid rgba(123, 47, 247, 0.3);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     color: #fff;
-    border-radius: 15px;
-    padding: 12px 28px;
-    font-weight: 700;
-    transition: 0.3s;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    border-radius: 16px;
+    padding: 8px 22px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.4s;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .shop-card:not(.coming-soon) .btn-shop {
-    background: linear-gradient(90deg, #7b2ff7, #ff0050);
+    background: linear-gradient(135deg, #ff3b3b 0%, #b30000 100%);
     border: none;
-    box-shadow: 0 5px 15px rgba(123, 47, 247, 0.4);
+    box-shadow: 0 10px 20px rgba(179, 0, 0, 0.2);
 }
 
 .shop-card:hover .btn-shop {
-    transform: scale(1.05);
-    box-shadow: 0 10px 25px rgba(255, 0, 80, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(179, 0, 0, 0.3);
+    background: linear-gradient(135deg, #ff5c5c 0%, #ff3b3b 100%);
 }
 
 /* =========================
-   COMING SOON
+   COMING SOON & FOCUS
 ========================= */
 
 .coming-soon {
-    filter: blur(1px) brightness(0.6);
-    opacity: 0.5;
-    pointer-events: none;
+    filter: grayscale(1) opacity(0.5);
+    cursor: not-allowed;
 }
 
-.row:hover .shop-card.coming-soon:not(:hover) {
-    filter: blur(5px) grayscale(1);
-    opacity: 0.3;
+.row:hover .shop-card.coming-soon {
+    filter: blur(3px) grayscale(1) opacity(0.3);
 }
 
-/* Specific Game Colors */
-.shop-card.tiktok:hover { border-color: #ff0050; box-shadow: 0 0 40px rgba(255, 0, 80, 0.3); }
-.shop-card.pubg:hover { border-color: #f3ae1a; box-shadow: 0 0 40px rgba(243, 174, 26, 0.3); }
-
-/* =========================
-   RESPONSIVE
-========================= */
+/* Specific Elegant Accents */
+.tiktok .card-icon { color: #ff3b5c !important; background: rgba(255, 59, 92, 0.1); }
+.shop-card.tiktok:hover .card-icon { background: #ff3b5c; color: #fff !important; }
 
 @media (max-width: 576px) {
-    .shop-card { padding: 30px 15px; border-radius: 25px; }
-    .card-icon { width: 60px; height: 60px; font-size: 28px; margin-bottom: 20px; }
-    .shop-card h5 { font-size: 16px; }
-    .btn-shop { padding: 10px 20px; font-size: 12px; }
+    .shop-container { padding: 40px 0; }
+    .shop-card { padding: 35px 20px; border-radius: 28px; }
+    .card-icon { width: 65px; height: 65px; font-size: 28px; }
+    .shop-card h5 { font-size: 18px; }
 }
