@@ -26,6 +26,11 @@ CREATE TABLE IF NOT EXISTS admins (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Default Admin (User: admin / Pass: admin123)
+-- Hash generated via password_hash('admin123', PASSWORD_DEFAULT)
+INSERT IGNORE INTO admins (id, username, password) VALUES 
+(1, 'admin', '$2y$10$7R6yNfN/wP/6r7vF.X/l/O0h0.oGqSgE4xS3v7f9.X8bZ3m6Y6a7.');
+
 -- OTP Requests Table
 CREATE TABLE IF NOT EXISTS otp_requests (
     id INT(11) AUTO_INCREMENT PRIMARY KEY,
@@ -35,3 +40,34 @@ CREATE TABLE IF NOT EXISTS otp_requests (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     expires_at TIMESTAMP NULL
 );
+
+-- Premium Requests Table
+CREATE TABLE IF NOT EXISTS premium_requests (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    user_id INT(11) NOT NULL,
+    method VARCHAR(50) NOT NULL,
+    sender_number VARCHAR(20) NOT NULL,
+    trxid VARCHAR(50) NOT NULL UNIQUE,
+    status ENUM('pending', 'approved', 'rejected') DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- Site Settings Table
+CREATE TABLE IF NOT EXISTS site_settings (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    setting_key VARCHAR(50) NOT NULL UNIQUE,
+    setting_value TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Default Site Settings
+INSERT IGNORE INTO site_settings (setting_key, setting_value) VALUES 
+('bkash_number', '০১৭XXXXXXXX'),
+('bkash_type', 'Personal'),
+('nagad_number', '০১৭XXXXXXXX'),
+('nagad_type', 'Personal'),
+('rocket_number', '০১৮XXXXXXXX'),
+('rocket_type', 'Personal'),
+('payment_instruction', 'বিকাশ, নগদ অথবা রকেট অ্যাপ থেকে "Send Money" করুন।'),
+('whatsapp_support', 'https://wa.me/8801700000000');
