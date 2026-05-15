@@ -72,7 +72,7 @@ session_start();
       </form>
       <ul class="navbar-nav ms-auto align-items-center py-3 py-lg-0">
         <li class="nav-item">
-            <a class="nav-link text-white" href="landing/landingpage.html">রিসেলার হন</a>
+            <a class="nav-link text-white" href="landing/landingpage.php">রিসেলার হন</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-white" href="shop/TikTokTopUp.php">টিকটক শপ</a>
