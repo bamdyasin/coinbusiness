@@ -14,7 +14,6 @@ $message = "";
 if (isset($_GET['ref']) && !empty($_GET['ref'])) {
     $ref_code = mysqli_real_escape_string($conn, $_GET['ref']);
     // Check if we already counted this click in this session to prevent spam
-    session_start();
     if (!isset($_SESSION['counted_ref_' . $ref_code])) {
         mysqli_query($conn, "UPDATE users SET referral_clicks = referral_clicks + 1 WHERE referral_code = '$ref_code'");
         $_SESSION['counted_ref_' . $ref_code] = true;
