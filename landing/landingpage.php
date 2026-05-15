@@ -1,3 +1,19 @@
+<?php
+session_start();
+include '../includes/db.php';
+
+$referrer_name = "";
+if (isset($_GET['ref']) && !empty($_GET['ref'])) {
+    $ref_code = mysqli_real_escape_string($conn, $_GET['ref']);
+    $_SESSION['ref'] = $ref_code; // Save for registration page
+
+    // Fetch Referrer Name
+    $ref_query = mysqli_query($conn, "SELECT name FROM users WHERE referral_code = '$ref_code'");
+    if ($row = mysqli_fetch_assoc($ref_query)) {
+        $referrer_name = $row['name'];
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -19,8 +35,63 @@
 <!-- Custom Style -->
 <link rel="stylesheet" href="style.css">
 
+<style>
+    .ref-toast {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(30, 41, 59, 0.9);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 15px;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        animation: slideIn 0.5s ease forwards;
+    }
+    @keyframes slideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    .ref-avatar {
+        width: 40px;
+        height: 40px;
+        background: #3b82f6;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+    }
+</style>
+
 </head>
 <body>
+
+<?php if (!empty($referrer_name)): ?>
+<div class="ref-toast" id="refToast">
+    <div class="ref-avatar"><?php echo strtoupper(substr($referrer_name, 0, 1)); ?></div>
+    <div>
+        <small class="text-white-50 d-block" style="font-size: 0.7rem;">Referred By</small>
+        <span class="fw-bold"><?php echo $referrer_name; ?></span>
+    </div>
+    <button type="button" class="btn-close btn-close-white ms-2" onclick="document.getElementById('refToast').remove()"></button>
+</div>
+<script>
+    setTimeout(() => {
+        const toast = document.getElementById('refToast');
+        if(toast) {
+            toast.style.transition = '0.5s';
+            toast.style.opacity = '0';
+            setTimeout(() => toast.remove(), 500);
+        }
+    }, 5000);
+</script>
+<?php endif; ?>
 
 <!-- NAVBAR -->
 
@@ -123,7 +194,7 @@
 
         <div class="d-flex gap-3 flex-wrap mt-4 justify-content-center justify-content-lg-start">
 
-          <a href="../user/login.php" class="btn btn-main">
+          <a href="../user/register.php" class="btn btn-main">
             🔥 এখনই এনরোল করুন
           </a>
 
@@ -444,7 +515,7 @@
               সম্পূর্ণ টাকা Refund করে দেওয়া হবে।
             </p>
 
-            <a href="../user/login.php" class="btn btn-main mt-3">
+            <a href="../user/register.php" class="btn btn-main mt-3">
               এখনই শুরু করুন
             </a>
 
@@ -477,7 +548,7 @@
         মাত্র ২০ মিনিটের ভিডিও দেখেই A to Z সবকিছু বুঝে যাবেন।
       </p>
 
-      <a href="../user/login.php" class="btn btn-light btn-lg px-5 py-3 rounded-4 mt-4 fw-bold">
+      <a href="../user/register.php" class="btn btn-light btn-lg px-5 py-3 rounded-4 mt-4 fw-bold">
         🔥 এখনই এনরোল করুন
       </a>
 

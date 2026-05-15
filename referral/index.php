@@ -153,7 +153,7 @@ include '../user/header.php';
                     <i class="bi bi-person-circle"></i> প্রোফাইল
                 </a>
                 <a href="index.php" class="sidebar-link active">
-                    <i class="bi bi-gift"></i> রেফারেল সিস্টেম
+                    <i class="bi bi-gift"></i> এফিলিয়েট সিস্টেম
                 </a>
                 <a href="../user/payment.php" class="sidebar-link">
                     <i class="bi bi-wallet2"></i> পেমেন্ট হিস্ট্রি
@@ -181,8 +181,8 @@ include '../user/header.php';
                         <h2 class="fw-bold mb-3">প্রতি সফল রেফারে পান <span class="text-warning">৳৫০</span></h2>
                         <p class="text-white-80 mb-4 small">আপনার নেটওয়ার্ক ব্যবহার করে আয় বাড়ান। কোনো লিমিট নেই!</p>
                         <div class="d-flex gap-2">
-                            <button class="btn btn-light btn-sm rounded-pill px-3 fw-bold text-primary" onclick="copyRefLink()">লিংক কপি</button>
-                            <a href="https://wa.me/?text=Hi, join CoinStore.bd! Link: <?php echo $full_base_url; ?>/user/register.php?ref=<?php echo $user['referral_code']; ?>" target="_blank" class="btn btn-success btn-sm rounded-pill px-3 fw-bold">
+                            <button class="btn btn-light btn-sm rounded-pill px-3 fw-bold text-primary copy-btn-banner" onclick="copyRefLink(this)">লিংক কপি</button>
+                            <a href="https://wa.me/?text=Hi, join CoinStore.bd! Link: <?php echo $full_base_url; ?>/landing/landingpage.php?ref=<?php echo $user['referral_code']; ?>" target="_blank" class="btn btn-success btn-sm rounded-pill px-3 fw-bold">
                                 <i class="bi bi-whatsapp me-1"></i>শেয়ার
                             </a>
                         </div>
@@ -225,8 +225,8 @@ include '../user/header.php';
             <div class="app-card mb-4">
                 <h6 class="fw-bold mb-3">আপনার রেফারেল লিংক</h6>
                 <div class="ref-link-container">
-                    <span class="ref-link-text" id="refLinkText"><?php echo $full_base_url; ?>/user/register.php?ref=<?php echo $user['referral_code']; ?></span>
-                    <button class="copy-btn btn-sm" onclick="copyRefLink()">
+                    <span class="ref-link-text" id="refLinkText"><?php echo $full_base_url; ?>/landing/landingpage.php?ref=<?php echo $user['referral_code']; ?></span>
+                    <button class="copy-btn btn-sm" onclick="copyRefLink(this)">
                         <i class="bi bi-copy"></i>
                     </button>
                 </div>
@@ -289,10 +289,24 @@ include '../user/header.php';
 </div>
 
 <script>
-function copyRefLink() {
+function copyRefLink(btnElement) {
     var copyText = document.getElementById("refLinkText").innerText;
     navigator.clipboard.writeText(copyText).then(function() {
-        alert("Link copied!");
+        const originalHtml = btnElement.innerHTML;
+        
+        if (btnElement.classList.contains('copy-btn-banner')) {
+            btnElement.innerText = "Copied!";
+        } else {
+            btnElement.innerHTML = '<i class="bi bi-check2"></i>';
+            btnElement.style.background = "#10b981";
+        }
+        
+        setTimeout(() => {
+            btnElement.innerHTML = originalHtml;
+            if (!btnElement.classList.contains('copy-btn-banner')) {
+                btnElement.style.background = "#3b82f6";
+            }
+        }, 2000);
     });
 }
 </script>

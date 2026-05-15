@@ -11,12 +11,17 @@ if (isset($_SESSION['user_id'])) {
 $message = "";
 
 // Track referral clicks
-if (isset($_GET['ref']) && !empty($_GET['ref'])) {
-    $ref_code = mysqli_real_escape_string($conn, $_GET['ref']);
+$session_ref = isset($_SESSION['ref']) ? $_SESSION['ref'] : '';
+$url_ref = isset($_GET['ref']) ? $_GET['ref'] : '';
+$active_ref = !empty($url_ref) ? $url_ref : $session_ref;
+
+if (!empty($url_ref)) {
+    $ref_code = mysqli_real_escape_string($conn, $url_ref);
     // Check if we already counted this click in this session to prevent spam
     if (!isset($_SESSION['counted_ref_' . $ref_code])) {
         mysqli_query($conn, "UPDATE users SET referral_clicks = referral_clicks + 1 WHERE referral_code = '$ref_code'");
         $_SESSION['counted_ref_' . $ref_code] = true;
+        $_SESSION['ref'] = $ref_code; // Sync with session
     }
 }
 
@@ -111,7 +116,7 @@ include 'header.php';
                             <label class="form-label text-white-50">রেফার কোড (ঐচ্ছিক)</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="bi bi-gift"></i></span>
-                                <input type="text" name="referral_code_input" class="form-control" placeholder="ABC12345" value="<?php echo isset($_GET['ref']) ? htmlspecialchars($_GET['ref']) : ''; ?>">
+                                <input type="text" name="referral_code_input" class="form-control" placeholder="ABC12345" value="<?php echo htmlspecialchars($active_ref); ?>">
                             </div>
                         </div>
 
