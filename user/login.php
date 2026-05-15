@@ -2,6 +2,12 @@
 session_start();
 include '../includes/db.php';
 
+// If already logged in, redirect to payment
+if (isset($_SESSION['user_id'])) {
+    header("Location: payment.php");
+    exit();
+}
+
 $message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

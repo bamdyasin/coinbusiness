@@ -1,6 +1,13 @@
 <?php
 include '../includes/db.php';
 
+session_start();
+// If already logged in, redirect to payment
+if (isset($_SESSION['user_id'])) {
+    header("Location: payment.php");
+    exit();
+}
+
 $message = "";
 
 // Track referral clicks

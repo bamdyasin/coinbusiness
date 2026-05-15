@@ -61,11 +61,7 @@
     <a class="navbar-brand fw-bold text-white" href="../index.php">
         <span class="text-primary">🚀</span> CoinStore<span class="text-primary">.bd</span>
     </a>
-    
-    <!-- Navigation Links -->
-    <div class="d-none d-lg-flex ms-4">
-        <a href="../shop/index.php" class="text-white-50 text-decoration-none hover-white transition-all px-3">শপ</a>
-    </div>
+
     
     <!-- Right side items -->
     <div class="ms-auto d-flex align-items-center">
