@@ -12,8 +12,18 @@ $message = "";
 
 // Track referral clicks
 $session_ref = isset($_SESSION['ref']) ? $_SESSION['ref'] : '';
+$cookie_ref = isset($_COOKIE['ref_code']) ? $_COOKIE['ref_code'] : '';
 $url_ref = isset($_GET['ref']) ? $_GET['ref'] : '';
-$active_ref = !empty($url_ref) ? $url_ref : $session_ref;
+
+// Priority: URL > Session > Cookie
+$active_ref = "";
+if (!empty($url_ref)) {
+    $active_ref = $url_ref;
+} elseif (!empty($session_ref)) {
+    $active_ref = $session_ref;
+} elseif (!empty($cookie_ref)) {
+    $active_ref = $cookie_ref;
+}
 
 if (!empty($url_ref)) {
     $ref_code = mysqli_real_escape_string($conn, $url_ref);
@@ -22,7 +32,10 @@ if (!empty($url_ref)) {
         mysqli_query($conn, "UPDATE users SET referral_clicks = referral_clicks + 1 WHERE referral_code = '$ref_code'");
         $_SESSION['counted_ref_' . $ref_code] = true;
         $_SESSION['ref'] = $ref_code; // Sync with session
+        setcookie('ref_code', $ref_code, time() + (86400 * 30), "/"); // Sync with cookie
     }
+} elseif (!empty($active_ref) && empty($_SESSION['ref'])) {
+    $_SESSION['ref'] = $active_ref; // Ensure session is populated from cookie/other
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -116,7 +129,7 @@ include 'header.php';
                             <label class="form-label text-white-50">রেফার কোড (ঐচ্ছিক)</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="bi bi-gift"></i></span>
-                                <input type="text" name="referral_code_input" class="form-control" placeholder="ABC12345" value="<?php echo htmlspecialchars($active_ref); ?>">
+                                <input type="text" name="referral_code_input" class="form-control" placeholder="ABC12345" value="<?php echo htmlspecialchars($active_ref); ?>" readonly>
                             </div>
                         </div>
 

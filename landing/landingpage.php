@@ -3,11 +3,27 @@ session_start();
 include '../includes/db.php';
 
 $referrer_name = "";
+$ref_code = "";
+
+// 1. Priority: URL parameter
 if (isset($_GET['ref']) && !empty($_GET['ref'])) {
     $ref_code = mysqli_real_escape_string($conn, $_GET['ref']);
-    $_SESSION['ref'] = $ref_code; // Save for registration page
+    $_SESSION['ref'] = $ref_code;
+    // Store in cookie for 30 days
+    setcookie('ref_code', $ref_code, time() + (86400 * 30), "/"); 
+} 
+// 2. Secondary: Session
+elseif (isset($_SESSION['ref'])) {
+    $ref_code = $_SESSION['ref'];
+}
+// 3. Fallback: Cookie
+elseif (isset($_COOKIE['ref_code'])) {
+    $ref_code = mysqli_real_escape_string($conn, $_COOKIE['ref_code']);
+    $_SESSION['ref'] = $ref_code; // Sync back to session
+}
 
-    // Fetch Referrer Name
+// Fetch Referrer Name if we have a code
+if (!empty($ref_code)) {
     $ref_query = mysqli_query($conn, "SELECT name FROM users WHERE referral_code = '$ref_code'");
     if ($row = mysqli_fetch_assoc($ref_query)) {
         $referrer_name = $row['name'];
@@ -89,7 +105,7 @@ if (isset($_GET['ref']) && !empty($_GET['ref'])) {
             toast.style.opacity = '0';
             setTimeout(() => toast.remove(), 500);
         }
-    }, 5000);
+    }, 2000); // 2 seconds
 </script>
 <?php endif; ?>
 

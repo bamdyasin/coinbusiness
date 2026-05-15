@@ -224,12 +224,13 @@ include '../user/header.php';
             <!-- Link Box -->
             <div class="app-card mb-4">
                 <h6 class="fw-bold mb-3">আপনার রেফারেল লিংক</h6>
-                <div class="ref-link-container">
+                <div class="ref-link-container" style="cursor: pointer;" onclick="copyRefLink(this.querySelector('.copy-btn'))">
                     <span class="ref-link-text" id="refLinkText"><?php echo $full_base_url; ?>/landing/landingpage.php?ref=<?php echo $user['referral_code']; ?></span>
-                    <button class="copy-btn btn-sm" onclick="copyRefLink(this)">
+                    <button class="copy-btn btn-sm">
                         <i class="bi bi-copy"></i>
                     </button>
                 </div>
+                <small class="text-white-50 mt-2 d-block"><i class="bi bi-info-circle me-1"></i> বক্সে ক্লিক করে লিংক কপি করুন</small>
             </div>
 
             <!-- List -->
@@ -291,23 +292,44 @@ include '../user/header.php';
 <script>
 function copyRefLink(btnElement) {
     var copyText = document.getElementById("refLinkText").innerText;
-    navigator.clipboard.writeText(copyText).then(function() {
-        const originalHtml = btnElement.innerHTML;
-        
-        if (btnElement.classList.contains('copy-btn-banner')) {
-            btnElement.innerText = "Copied!";
-        } else {
-            btnElement.innerHTML = '<i class="bi bi-check2"></i>';
-            btnElement.style.background = "#10b981";
+    
+    // Create a temporary textarea for better mobile compatibility if navigator.clipboard fails
+    const textArea = document.createElement("textarea");
+    textArea.value = copyText;
+    document.body.appendChild(textArea);
+    textArea.select();
+    
+    try {
+        document.execCommand('copy');
+        showFeedback(btnElement);
+    } catch (err) {
+        // Fallback to navigator.clipboard if execCommand fails
+        navigator.clipboard.writeText(copyText).then(function() {
+            showFeedback(btnElement);
+        });
+    }
+    document.body.removeChild(textArea);
+}
+
+function showFeedback(btnElement) {
+    const originalHtml = btnElement.innerHTML;
+    const originalPadding = btnElement.style.padding;
+    
+    if (btnElement.classList.contains('copy-btn-banner')) {
+        btnElement.innerText = "Copied!";
+    } else {
+        btnElement.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+        btnElement.style.background = "#10b981";
+        btnElement.style.padding = "8px 15px";
+    }
+    
+    setTimeout(() => {
+        btnElement.innerHTML = originalHtml;
+        btnElement.style.padding = originalPadding;
+        if (!btnElement.classList.contains('copy-btn-banner')) {
+            btnElement.style.background = "#3b82f6";
         }
-        
-        setTimeout(() => {
-            btnElement.innerHTML = originalHtml;
-            if (!btnElement.classList.contains('copy-btn-banner')) {
-                btnElement.style.background = "#3b82f6";
-            }
-        }, 2000);
-    });
+    }, 2000);
 }
 </script>
 
