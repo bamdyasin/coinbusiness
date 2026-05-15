@@ -72,7 +72,7 @@ include 'header.php';
                                 <input type="checkbox" class="form-check-input" id="remember">
                                 <label class="form-check-label text-white-50" for="remember">মনে রাখুন</label>
                             </div>
-                            <a href="#" class="text-decoration-none main-color">পাসওয়ার্ড ভুলে গেছেন?</a>
+                            <a href="forgot_password.php" class="text-decoration-none main-color">পাসওয়ার্ড ভুলে গেছেন?</a>
                         </div>
 
                         <button type="submit" class="btn btn-main w-100 py-2 fs-5">লগইন</button>

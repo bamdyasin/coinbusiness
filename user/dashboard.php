@@ -18,9 +18,6 @@ $ref_query = mysqli_query($conn, "SELECT COUNT(*) as total FROM users WHERE refe
 $ref_data = mysqli_fetch_assoc($ref_query);
 $total_referrals = $ref_data['total'];
 
-// Get current view (default is 'overview')
-// $view = isset($_GET['view']) ? $_GET['view'] : 'overview'; // Deprecated profile view logic
-
 $page_title = "Dashboard - coinstore.bd";
 
 // Specific CSS for dashboard
@@ -37,7 +34,6 @@ $extra_css = '
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 25px;
-            /* height: 100%; */
         }
         .motivation-card {
             background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
@@ -190,7 +186,7 @@ include 'header.php';
             <!-- OVERVIEW VIEW -->
             <div class="motivation-card mb-4 shadow">
                 <h2 class="fw-bold">সফলতার সিঁড়িতে আপনার প্রথম পদক্ষেপ!</h2>
-                <p class="mb-0">আপনার প্রতিদিনের পরিশ্রমই আপনাকে বড় বিজনেসের দিকে নিয়ে যাবে। লেগে থাকুন, সফলতা নিশ্চিত।</p>
+                <p class="mb-0">আপনার প্রতিদিনের পরিশ্রমই আপনাকে বড় বিজনেসের দিকে নিয়ে যাবে। لگے থাকুন, সফলতা নিশ্চিত।</p>
             </div>
 
             <!-- Quick Stats -->

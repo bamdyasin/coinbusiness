@@ -12,6 +12,28 @@ $user_id = $_SESSION['user_id'];
 $query = mysqli_query($conn, "SELECT * FROM users WHERE id='$user_id'");
 $user = mysqli_fetch_assoc($query);
 
+$message = "";
+
+// Handle Form Submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $method = mysqli_real_escape_string($conn, $_POST['method']);
+    $sender_number = mysqli_real_escape_string($conn, $_POST['sender_number']);
+    $trxid = mysqli_real_escape_string($conn, $_POST['trxid']);
+
+    // Check if TrxID already exists
+    $check_trx = mysqli_query($conn, "SELECT * FROM premium_requests WHERE trxid='$trxid'");
+    if (mysqli_num_rows($check_trx) > 0) {
+        $message = "<div class='alert alert-danger'>Ei TrxID-ti diye ager ekta request ache!</div>";
+    } else {
+        $sql = "INSERT INTO premium_requests (user_id, method, sender_number, trxid) VALUES ('$user_id', '$method', '$sender_number', '$trxid')";
+        if (mysqli_query($conn, $sql)) {
+            $message = "<div class='alert alert-success'>আপনার পেমেন্ট রিকোয়েস্ট জমা হয়েছে! এডমিন ভেরিফাই করলে আপনার একাউন্ট প্রিমিয়াম হয়ে যাবে।</div>";
+        } else {
+            $message = "<div class='alert alert-danger'>Error: " . mysqli_error($conn) . "</div>";
+        }
+    }
+}
+
 $page_title = "Payment - coinstore.bd";
 
 // Styling aligned with Dashboard
@@ -155,6 +177,8 @@ include 'header.php';
                     <p class="text-white-50 mb-0">আপনার পেমেন্ট তথ্য সাবমিট করুন</p>
                 </div>
 
+                <?php echo $message; ?>
+
                 <div class="row g-4">
                     <!-- Instructions -->
                     <div class="col-md-6">
@@ -210,24 +234,24 @@ include 'header.php';
                     <div class="col-md-6">
                         <div class="app-card h-100">
                             <h5 class="fw-bold mb-4">পেমেন্ট ফর্ম</h5>
-                            <form action="#">
+                            <form action="payment.php" method="POST">
                                 <div class="mb-3">
                                     <label class="small text-white-50 mb-1">পেমেন্ট মাধ্যম</label>
-                                    <select class="form-select form-select-sm">
-                                        <option selected>বিকাশ (bKash)</option>
-                                        <option>নগদ (Nagad)</option>
-                                        <option>রকেট (Rocket)</option>
+                                    <select class="form-select form-select-sm" name="method" required>
+                                        <option value="bKash" selected>বিকাশ (bKash)</option>
+                                        <option value="Nagad">নগদ (Nagad)</option>
+                                        <option value="Rocket">রকেট (Rocket)</option>
                                     </select>
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="small text-white-50 mb-1">আপনার ফোন নম্বর</label>
-                                    <input type="text" class="form-control form-control-sm" placeholder="017XXXXXXXX">
+                                    <input type="text" class="form-control form-control-sm" name="sender_number" placeholder="017XXXXXXXX" required>
                                 </div>
 
                                 <div class="mb-4">
                                     <label class="small text-white-50 mb-1">ট্রানজেকশন আইডি (TrxID)</label>
-                                    <input type="text" class="form-control form-control-sm" placeholder="8N72KL9X">
+                                    <input type="text" class="form-control form-control-sm" name="trxid" placeholder="8N72KL9X" required>
                                 </div>
 
                                 <button type="submit" class="btn btn-main w-100 py-2">
