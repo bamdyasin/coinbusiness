@@ -52,6 +52,13 @@ $tables = [
         status ENUM('pending', 'approved', 'rejected') DEFAULT 'pending',
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    )",
+
+    "site_settings" => "CREATE TABLE IF NOT EXISTS site_settings (
+        id INT(11) AUTO_INCREMENT PRIMARY KEY,
+        setting_key VARCHAR(50) NOT NULL UNIQUE,
+        setting_value TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )"
 ];
 
@@ -84,7 +91,28 @@ foreach ($alterations as $sql) {
 }
 echo "✅ All columns checked/updated.<br>";
 
-// --- 3. Default Data (Admin) ---
+// --- 3. Default Settings ---
+$default_settings = [
+    'bkash_number' => '০১৭XXXXXXXX',
+    'bkash_type' => 'Personal',
+    'nagad_number' => '০১৭XXXXXXXX',
+    'nagad_type' => 'Personal',
+    'rocket_number' => '০১৮XXXXXXXX',
+    'rocket_type' => 'Personal',
+    'payment_instruction' => 'বিকাশ, নগদ অথবা রকেট অ্যাপ থেকে "Send Money" করুন।',
+    'whatsapp_support' => 'https://wa.me/8801700000000'
+];
+
+echo "<h3>Initializing Settings...</h3>";
+foreach ($default_settings as $key => $val) {
+    $check_setting = mysqli_query($conn, "SELECT * FROM site_settings WHERE setting_key='$key'");
+    if (mysqli_num_rows($check_setting) == 0) {
+        mysqli_query($conn, "INSERT INTO site_settings (setting_key, setting_value) VALUES ('$key', '$val')");
+        echo "✅ Setting '$key' initialized.<br>";
+    }
+}
+
+// --- 4. Default Data (Admin) ---
 
 $check_admin = mysqli_query($conn, "SELECT * FROM admins WHERE username='admin'");
 if (mysqli_num_rows($check_admin) == 0) {

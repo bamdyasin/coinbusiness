@@ -1,10 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['admin_id'])) {
-    header("Location: login.php");
-    exit();
-}
-include '../includes/db.php';
+// Session and DB logic moved to main pages to avoid headers already sent errors
 ?>
 <!DOCTYPE html>
 <html lang="bn">
@@ -30,6 +25,7 @@ include '../includes/db.php';
             color: white;
             font-family: 'Hind Siliguri', sans-serif;
             padding-top: 80px;
+            padding-bottom: 90px;
         }
         
         /* Navbar Style from User Side */
@@ -89,7 +85,13 @@ include '../includes/db.php';
         }
 
         /* Tables */
-        .table { color: white; border-color: var(--border-white); }
+        .table { 
+            color: white; 
+            border-color: var(--border-white);
+            --bs-table-bg: transparent;
+            --bs-table-hover-bg: rgba(255, 255, 255, 0.05);
+            --bs-table-hover-color: white;
+        }
         .table thead th { border-bottom: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); font-weight: 500; }
         .table tbody td { border-bottom: 1px solid var(--border-white); vertical-align: middle; }
 
@@ -111,8 +113,8 @@ include '../includes/db.php';
             font-weight: 600;
         }
         .status-pending { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
-        .status-verified { background: rgba(16, 185, 129, 0.2); color: #34d399; }
-        .status-expired { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+        .status-verified, .status-approved { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+        .status-expired, .status-rejected { background: rgba(239, 68, 68, 0.2); color: #f87171; }
 
         @media (max-width: 991px) {
             .sidebar-col { display: none; }
@@ -142,11 +144,17 @@ include '../includes/db.php';
                 <a class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'index.php') ? 'active' : ''; ?>" href="index.php">
                     <i class="bi bi-grid-1x2-fill"></i> ড্যাশবোর্ড
                 </a>
+                <a class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'premium_requests.php') ? 'active' : ''; ?>" href="premium_requests.php">
+                    <i class="bi bi-star-fill"></i> প্রিমিয়াম রিকোয়েস্ট
+                </a>
+                <a class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'otp_requests.php') ? 'active' : ''; ?>" href="otp_requests.php">
+                    <i class="bi bi-shield-lock-fill"></i> ওটিপি রিকোয়েস্ট
+                </a>
                 <a class="nav-link" href="users.php">
                     <i class="bi bi-people-fill"></i> ইউজার লিস্ট
                 </a>
-                <a class="nav-link" href="orders.php">
-                    <i class="bi bi-cart-fill"></i> অর্ডার লিস্ট
+                <a class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'settings.php') ? 'active' : ''; ?>" href="settings.php">
+                    <i class="bi bi-gear-fill"></i> পেমেন্ট সেটিংস
                 </a>
                 <hr class="border-secondary opacity-25">
                 <a class="nav-link text-danger" href="logout.php">
