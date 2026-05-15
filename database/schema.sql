@@ -1,0 +1,15 @@
+CREATE DATABASE IF NOT EXISTS coinstorebd;
+
+USE coinstorebd;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    phone VARCHAR(20) NOT NULL UNIQUE,
+    email VARCHAR(100),
+    password VARCHAR(255) NOT NULL,
+    referral_code VARCHAR(20) UNIQUE,
+    referred_by VARCHAR(20),
+    balance DECIMAL(10,2) DEFAULT 0.00,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

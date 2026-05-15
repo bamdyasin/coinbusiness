@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -15,9 +18,82 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg">
+<style>
+    body { padding-top: 70px; }
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1030;
+    }
+    .search-input {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #4ade80; /* Light green */
+        border-radius: 50px 0 0 50px;
+        padding-left: 20px;
+    }
+    .search-input::placeholder {
+        color: rgba(74, 222, 128, 0.6); /* Semi-transparent light green */
+    }
+    .search-input:focus {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: #4ade80;
+        box-shadow: none;
+        color: #4ade80;
+    }
+    .search-btn {
+        border-radius: 0 50px 50px 0;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-left: none;
+        background: rgba(59, 130, 246, 0.2);
+        color: #3b82f6;
+    }
+    .search-btn:hover {
+        background: #3b82f6;
+        color: white;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container">
-    <a class="navbar-brand" href="index.html">🚀 CoinStore.bd</a>
+    <a class="navbar-brand fw-bold" href="index.php">🚀 CoinStore.bd</a>
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <form class="d-flex ms-lg-4 mt-3 mt-lg-0" role="search">
+        <div class="input-group">
+          <input class="form-control search-input" type="text" placeholder="অর্ডার স্ট্যাটাস দেখুন" aria-label="Search">
+          <button class="btn search-btn" type="submit">
+            <i class="bi bi-search"></i>
+          </button>
+        </div>
+      </form>
+      <ul class="navbar-nav ms-auto align-items-center py-3 py-lg-0">
+        <li class="nav-item">
+            <a class="nav-link text-white" href="landing/landingpage.html">রিসেলার হন</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="shop/TikTokTopUp.php">টিকটক শপ</a>
+        </li>
+        <?php if(isset($_SESSION['user_id'])): ?>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="user/dashboard.php">ড্যাশবোর্ড</a>
+            </li>
+            <li class="nav-item mt-2 mt-lg-0 ms-lg-2">
+                <a class="btn btn-primary rounded-pill px-4 w-100" href="user/profile.php">প্রোফাইল</a>
+            </li>
+        <?php else: ?>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="user/login.php">লগইন</a>
+            </li>
+            <li class="nav-item mt-2 mt-lg-0 ms-lg-2">
+                <a class="btn btn-outline-primary rounded-pill px-4 w-100" href="user/register.php">রেজিস্টার</a>
+            </li>
+        <?php endif; ?>
+      </ul>
+    </div>
   </div>
 </nav>
 
@@ -37,7 +113,7 @@
                     </div>
                     <h5>TikTok</h5>
                     <p>Coins & Follower</p>
-                    <a href="payment/payment.html" class="btn btn-shop">অর্ডার করুন</a>
+                    <a href="shop/TikTokTopUp.php" class="btn btn-shop">অর্ডার করুন</a>
                 </div>
             </div>
 
