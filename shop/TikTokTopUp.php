@@ -120,16 +120,34 @@ session_start();
                     <div class="row">
                         <div class="col-md-6 mb-4">
                             <label class="form-label text-white-50 small"><i class="bi bi-caret-right-fill me-1 text-tiktok-sm"></i>পেমেন্ট মাধ্যম</label>
-                            <select class="form-select" name="payment_method" required>
+                            <select class="form-select" name="payment_method" id="payment_method" required onchange="updatePaymentInfo()">
                                 <option value="" selected disabled>পছন্দ করুন</option>
                                 <option value="bKash">বিকাশ (bKash)</option>
                                 <option value="Nagad">নগদ (Nagad)</option>
                                 <option value="Rocket">রকেট (Rocket)</option>
                             </select>
+                            
+                            <!-- Dynamic Payment Info -->
+                            <div id="payment_info_box" class="mt-3 p-3 rounded-3 d-none" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span class="small text-white-50" id="method_display">bKash</span>
+                                    <span class="badge bg-primary px-2 py-1" style="font-size: 0.65rem;" id="account_type">Personal</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="fw-bold fs-5 text-white" id="payment_number">017XXXXXXXX</span>
+                                    <button type="button" class="btn btn-sm btn-link text-tiktok-sm p-0 text-decoration-none" onclick="copyNumber()">
+                                        <i class="bi bi-copy me-1"></i> Copy
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-6 mb-4">
                             <label class="form-label text-white-50 small"><i class="bi bi-caret-right-fill me-1 text-tiktok-sm"></i>ট্রানজেকশন আইডি (TrxID)</label>
                             <input type="text" class="form-control" name="trxid" placeholder="8N72KL9X" required>
+
+                            <small class="text-tiktok-sm fw-500">
+                                <i class="bi bi-info-circle me-1"></i> টাকা পাঠানোর পর মেসেজে <b>TrxID</b> পাবেন। 
+                            </small>
                         </div>
                     </div>
 
@@ -159,6 +177,43 @@ session_start();
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
+    const paymentData = {
+        'bKash': { number: '017XXXXXXXX', type: 'Personal' },
+        'Nagad': { number: '018XXXXXXXX', type: 'Personal' },
+        'Rocket': { number: '019XXXXXXXX', type: 'Personal' }
+    };
+
+    function updatePaymentInfo() {
+        const select = document.getElementById('payment_method');
+        const infoBox = document.getElementById('payment_info_box');
+        const methodDisplay = document.getElementById('method_display');
+        const accountType = document.getElementById('account_type');
+        const paymentNumber = document.getElementById('payment_number');
+        
+        const selected = select.value;
+        
+        if (selected && paymentData[selected]) {
+            methodDisplay.innerText = selected;
+            accountType.innerText = paymentData[selected].type;
+            paymentNumber.innerText = paymentData[selected].number;
+            infoBox.classList.remove('d-none');
+        } else {
+            infoBox.classList.add('d-none');
+        }
+    }
+
+    function copyNumber() {
+        const number = document.getElementById('payment_number').innerText;
+        navigator.clipboard.writeText(number).then(() => {
+            const btn = event.currentTarget;
+            const originalHtml = btn.innerHTML;
+            btn.innerHTML = '<i class="bi bi-check2"></i> Copied';
+            setTimeout(() => {
+                btn.innerHTML = originalHtml;
+            }, 2000);
+        });
+    }
+
     function updateBudget(change) {
         const input = document.getElementById('budget_val');
         let newVal = parseInt(input.value) + change;

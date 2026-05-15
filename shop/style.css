@@ -50,7 +50,7 @@ body {
     font-weight: 500;
 }
 .text-tiktok-sm {
-    color: #fe2c55;
+    color: #25f4ee;
     font-size: 0.8rem;
 }
 .btn-tiktok {
@@ -193,6 +193,7 @@ body {
     margin-bottom: 10px;
     background: linear-gradient(135deg, #ffffff 40%, #fe2c55 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
