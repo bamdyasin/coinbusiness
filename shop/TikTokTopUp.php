@@ -1,36 +1,14 @@
 <?php
-session_start();
+$page_title = 'TikTok Top-Up';
+$root_path = '../';
+include '../includes/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikTok Top-Up - coinstore.bd</title>
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Custom Style -->
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-<nav class="navbar navbar-expand-lg navbar-dark">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="../index.php">🚀 CoinStore.bd</a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto align-items-center">
-        <li class="nav-item">
-            <a class="nav-link text-white" href="../index.php">হোম</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<!-- Shop Specific CSS -->
+<style>
+    /* You can keep or move these to shop/style.css */
+</style>
+<link rel="stylesheet" href="style.css">
 
 <div class="container mt-4">
     <div class="row justify-content-center">
@@ -170,12 +148,6 @@ session_start();
     </div>
 </div>
 
-<footer class="footer mt-5 py-4 text-center border-top border-white border-opacity-10">
-    <span class="text-white-50 small">© 2026 CoinStore.bd. All Rights Reserved.</span>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
     const paymentData = {
         'bKash': { number: '017XXXXXXXX', type: 'Personal' },
@@ -232,18 +204,20 @@ session_start();
         var boostTab = document.getElementById('boost-tab');
         var coinTab = document.getElementById('coin-tab');
 
-        boostTab.addEventListener('shown.bs.tab', function () {
-            document.getElementById('video_link_section').style.display = 'block';
-            document.getElementById('video_url_input').setAttribute('required', 'required');
-            document.getElementById('rule_public').innerText = 'ভিডিও অবশ্যই পাবলিক হতে হবে (Private ভিডিওতে কাজ হবে না)।';
-        });
+        if(boostTab && coinTab) {
+            boostTab.addEventListener('shown.bs.tab', function () {
+                document.getElementById('video_link_section').style.display = 'block';
+                document.getElementById('video_url_input').setAttribute('required', 'required');
+                document.getElementById('rule_public').innerText = 'ভিডিও অবশ্যই পাবলিক হতে হবে (Private ভিডিওতে কাজ হবে না)।';
+            });
 
-        coinTab.addEventListener('shown.bs.tab', function () {
-            document.getElementById('video_link_section').style.display = 'none';
-            document.getElementById('video_url_input').removeAttribute('required');
-            document.getElementById('rule_public').innerText = 'অর্ডার করার পর আমাদের হোয়াটসঅ্যাপে যোগাযোগ করুন।';
-        });
+            coinTab.addEventListener('shown.bs.tab', function () {
+                document.getElementById('video_link_section').style.display = 'none';
+                document.getElementById('video_url_input').removeAttribute('required');
+                document.getElementById('rule_public').innerText = 'অর্ডার করার পর আমাদের হোয়াটসঅ্যাপে যোগাযোগ করুন।';
+            });
+        }
     });
 </script>
-</body>
-</html>
+
+<?php include '../includes/footer.php'; ?>
