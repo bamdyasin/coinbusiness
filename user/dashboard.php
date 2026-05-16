@@ -90,44 +90,30 @@ $extra_css = '
         .section-title-box h2 { font-weight: 700; font-size: 2rem; position: relative; display: inline-block; padding-bottom: 10px; }
         .section-title-box h2::after { content: ""; width: 60px; height: 4px; background: #3b82f6; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 10px; }
 
-        .feature-item-list {
+        /* Unified List Item Design */
+        .list-item-row {
             display: flex;
             align-items: center;
             gap: 20px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 22px;
-            margin-bottom: 15px;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             transition: 0.3s;
         }
-        .feature-item-list:hover {
-            background: rgba(59, 130, 246, 0.05);
-            border-color: rgba(59, 130, 246, 0.2);
-        }
+        .list-item-row:last-child { border-bottom: none; }
+        
         .feature-icon-circle {
-            min-width: 60px; width: 60px; height: 60px;
+            min-width: 55px; width: 55px; height: 55px;
             background: rgba(59, 130, 246, 0.1); color: #3b82f6;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 1.6rem; border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 20px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; border: 1px solid rgba(59, 130, 246, 0.2);
         }
-        .feature-text-box h6 { margin: 0 0 5px 0; font-weight: 700; color: #fff; font-size: 1.1rem; }
-        .feature-text-box p { margin: 0; font-size: 1rem; color: rgba(255,255,255,0.7); line-height: 1.5; }
+        .feature-icon-circle img { width: 32px; height: 32px; object-fit: contain; }
+        
+        .feature-text-box h6 { margin: 0 0 4px 0; font-weight: 700; color: #fff; font-size: 1.1rem; }
+        .feature-text-box p { margin: 0; font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.4; }
 
-        .package-card-box {
-            background: rgba(30, 41, 59, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 25px;
-            height: 100%;
-            transition: 0.3s;
-        }
-        .package-card-box:hover {
-            border-color: rgba(59, 130, 246, 0.3);
-            background: rgba(30, 41, 59, 0.7);
-        }
-        .package-desc { font-size: 0.95rem !important; color: rgba(255,255,255,0.6) !important; line-height: 1.6; }
-        .package-icon-box img { width: 45px; height: 45px; object-fit: contain; }
+        .package-price { color: rgba(255,255,255,0.7); font-weight: 600; font-size: 1rem; display: block; }
+        .package-details-text { font-size: 0.9rem !important; color: rgba(255,255,255,0.5) !important; margin-top: 5px; line-height: 1.4; }
         
         .course-box-dark {
             background: rgba(30, 41, 59, 0.7);
@@ -135,7 +121,6 @@ $extra_css = '
             padding: 35px;
             border: 1px solid rgba(255,255,255,0.05);
         }
-        .course-list-dark { display: flex; flex-direction: column; gap: 15px; }
         .course-list-dark li { 
             width: 100%;
             color: #fff;
@@ -146,7 +131,7 @@ $extra_css = '
             font-weight: 600;
             display: flex;
             align-items: center;
-            border: none;
+            margin-bottom: 15px;
         }
         .course-list-dark li:nth-child(odd) {
             background: linear-gradient(135deg, #7b2ff7, #2575fc);
@@ -172,8 +157,6 @@ $extra_css = '
             text-align: center;
             margin-top: 40px;
         }
-        .cta-p { font-size: 1.1rem !important; color: rgba(255,255,255,0.8) !important; }
-
         @media (max-width: 991px) { .sidebar-col { display: none; } .hero-box h1 { font-size: 1.8rem; } }
     </style>';
 
@@ -240,106 +223,94 @@ include 'header.php';
                 </div>
             </div>
 
-            <!-- FEATURES -->
+            <!-- FEATURES CARD -->
             <div class="section-title-box"><h2>কেন এই বিজনেস শুরু করবেন?</h2></div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="feature-item-list">
-                        <div class="feature-icon-circle"><i class="bi bi-clock-history"></i></div>
-                        <div class="feature-text-box">
-                            <h6>Long Term Business</h6>
-                            <p>দীর্ঘ সময় ধরে ব্যবসা পরিচালনা করা সম্ভব।</p>
-                        </div>
+            <div class="app-card shadow-sm mb-4">
+                <div class="list-item-row">
+                    <div class="feature-icon-circle"><i class="bi bi-clock-history"></i></div>
+                    <div class="feature-text-box">
+                        <h6>Long Term Business</h6>
+                        <p>দীর্ঘ সময় ধরে ব্যবসা পরিচালনা করা সম্ভব।</p>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="feature-item-list">
-                        <div class="feature-icon-circle"><i class="bi bi-people-fill"></i></div>
-                        <div class="feature-text-box">
-                            <h6>Repeat Customer</h6>
-                            <p>৮০%+ কাস্টমার বারবার অর্ডার করে।</p>
-                        </div>
+                <div class="list-item-row">
+                    <div class="feature-icon-circle"><i class="bi bi-people-fill"></i></div>
+                    <div class="feature-text-box">
+                        <h6>Repeat Customer</h6>
+                        <p>৮০%+ কাস্টমার বারবার অর্ডার করে।</p>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="feature-item-list">
-                        <div class="feature-icon-circle"><i class="bi bi-wallet2"></i></div>
-                        <div class="feature-text-box">
-                            <h6>Low Investment</h6>
-                            <p>মাত্র ৩০০০ টাকা দিয়েই শুরু করা সম্ভব।</p>
-                        </div>
+                <div class="list-item-row">
+                    <div class="feature-icon-circle"><i class="bi bi-wallet2"></i></div>
+                    <div class="feature-text-box">
+                        <h6>Low Investment</h6>
+                        <p>মাত্র ৩০০০ টাকা দিয়েই শুরু করা সম্ভব।</p>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="feature-item-list">
-                        <div class="feature-icon-circle"><i class="bi bi-phone-fill"></i></div>
-                        <div class="feature-text-box">
-                            <h6>Work Anywhere</h6>
-                            <p>শুধু মোবাইল দিয়েই ব্যবসা পরিচালনা সম্ভব।</p>
-                        </div>
+                <div class="list-item-row">
+                    <div class="feature-icon-circle"><i class="bi bi-phone-fill"></i></div>
+                    <div class="feature-text-box">
+                        <h6>Work Anywhere</h6>
+                        <p>শুধু মোবাইল দিয়েই ব্যবসা পরিচালনা সম্ভব।</p>
                     </div>
                 </div>
             </div>
 
-            <!-- PACKAGES (Matching Landing Page Icons) -->
+            <!-- PACKAGES CARD (With Extra Info for Desktop) -->
             <div class="section-title-box"><h2>এই ৩০০০ টাকায় কী কী পাচ্ছেন?</h2></div>
-            <div class="row g-3">
-                <div class="col-md-6 col-lg-3">
-                    <div class="package-card-box shadow-sm text-center">
-                        <div class="package-icon-box mb-3"><img src="https://cdn-icons-png.flaticon.com/512/196/196578.png"></div>
-                        <h6 class="fw-bold mb-2">Visa Card</h6>
-                        <p class="text-primary fw-bold mb-2">10 USD = 1300 টাকা</p>
-                        <p class="package-desc mb-0">যা ব্যাংকের মাধ্যমে করতে পাসপোর্টসহ ১০–১২ হাজার টাকা লাগতে পারে।</p>
+            <div class="app-card shadow-sm">
+                <div class="list-item-row">
+                    <div class="feature-icon-circle"><img src="https://cdn-icons-png.flaticon.com/512/196/196578.png"></div>
+                    <div class="feature-text-box">
+                        <h6>Visa Card</h6>
+                        <span class="package-price">10 USD = 1300 টাকা</span>
+                        <p class="package-details-text d-none d-lg-block">যা ব্যাংকের মাধ্যমে করতে পাসপোর্টসহ ১০–১২ হাজার টাকা লাগতে পারে।</p>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="package-card-box shadow-sm text-center">
-                        <div class="package-icon-box mb-3"><img src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png"></div>
-                        <h6 class="fw-bold mb-2">Account Balance</h6>
-                        <p class="text-primary fw-bold mb-2">5.5 USD = 700 টাকা</p>
-                        <p class="package-desc mb-0">এটা আপনার একাউন্ট এ থাকবে এবং এটাই আপনার বিজনেসের পুজি।</p>
+                <div class="list-item-row">
+                    <div class="feature-icon-circle"><img src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png"></div>
+                    <div class="feature-text-box">
+                        <h6>Account Balance</h6>
+                        <span class="package-price">5.5 USD = 700 টাকা</span>
+                        <p class="package-details-text d-none d-lg-block">এটা আপনার একাউন্ট এ থাকবে এবং এটাই আপনার বিজনেসের পুজি।</p>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="package-card-box shadow-sm text-center">
-                        <div class="package-icon-box mb-3"><img src="https://cdn-icons-png.flaticon.com/512/226/226770.png"></div>
-                        <h6 class="fw-bold mb-2">Android App</h6>
-                        <p class="text-primary fw-bold mb-2">প্রিমিয়াম প্রাইস = 1000 টাকা</p>
-                        <p class="package-desc mb-0">এটা কম্পিউটার এর বিকল্প হিসেবে কাজ করবে, যেকোনো জায়গা থেকে কাজ করতে পারবেন।</p>
+                <div class="list-item-row">
+                    <div class="feature-icon-circle"><img src="https://cdn-icons-png.flaticon.com/512/226/226770.png"></div>
+                    <div class="feature-text-box">
+                        <h6>Android App</h6>
+                        <span class="package-price">প্রিমিয়াম প্রাইস = 1000 টাকা।</span>
+                        <p class="package-details-text d-none d-lg-block">এটা কম্পিউটার এর বিকল্প হিসেবে কাজ করবে, যেকোনো জায়গা থেকে কাজ করতে পারবেন।</p>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="package-card-box shadow-sm text-center">
-                        <div class="package-icon-box mb-3"><img src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png"></div>
-                        <h6 class="fw-bold mb-2">Website Code</h6>
-                        <p class="text-primary fw-bold mb-2">FREE Website Code</p>
-                        <p class="package-desc mb-0">কাস্টমার বাড়লে ওয়েবসাইট থাকলে ভালো এবং বিসনেস বড় করা সহজ হয়।</p>
+                <div class="list-item-row">
+                    <div class="feature-icon-circle"><img src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png"></div>
+                    <div class="feature-text-box">
+                        <h6>Website Code</h6>
+                        <span class="package-price">সম্পূর্ণ FREE Website Code</span>
+                        <p class="package-details-text d-none d-lg-block">কাস্টমার বাড়লে ওয়েবসাইট থাকলে ভালো এবং বিসনেস বড় করা সহজ হয় ।</p>
                     </div>
                 </div>
             </div>
 
-            <!-- COURSE & REFUND (Matching Landing Mobile/Tablet Style) -->
-            <div id="course-details" class="mt-5">
-                <div class="row g-4">
+            <!-- COURSE & REFUND -->
+            <div id="course-details" class="course-box-dark mt-5">
+                <div class="row align-items-center g-4">
                     <div class="col-lg-7">
-                        <div class="app-card h-100">
-                            <h3 class="fw-bold mb-4 text-center text-lg-start">কোর্সে যা যা থাকছে</h3>
-                            <ul class="course-list-dark list-unstyled mb-0">
-                                <li>✅ Full Video Tutorial</li>
-                                <li>✅ Business Setup Guide</li>
-                                <li>✅ Android App Setup</li>
-                                <li>✅ Customer Handling System</li>
-                                <li>✅ Support & Guidance</li> 
-                            </ul>
-                        </div>
+                        <h3 class="fw-bold mb-4">কোর্সে যা যা থাকছে</h3>
+                        <ul class="course-list-dark list-unstyled mb-0">
+                            <li>✅ Full Video Tutorial</li>
+                            <li>✅ Business Setup Guide</li>
+                            <li>✅ Android App Setup</li>
+                            <li>✅ Customer Handling System</li>
+                            <li>✅ Support & Guidance</li> 
+                        </ul>
                     </div>
                     <div class="col-lg-5">
-                        <div class="app-card h-100 text-center d-flex flex-column justify-content-center">
-                            <div class="refund-card-dark">
-                                <h4 class="fw-bold mb-3">Refund Guarantee <i class="bi bi-patch-check-fill text-primary"></i></h4>
-                                <p class="refund-text">Business Details দেখার পর Interested না হলে সম্পূর্ণ টাকা Refund করে দেওয়া হবে।</p>
-                                <a href="payment.php" class="btn btn-primary rounded-pill w-100 fw-bold py-2 mt-2">এখনই শুরু করুন</a>
-                            </div>
+                        <div class="refund-card-dark text-center">
+                            <h4 class="fw-bold mb-3">Refund Guarantee <i class="bi bi-patch-check-fill text-primary"></i></h4>
+                            <p class="refund-text">Business Details দেখার পর Interested না হলে সম্পূর্ণ টাকা Refund করে দেওয়া হবে।</p>
+                            <a href="payment.php" class="btn btn-primary rounded-pill w-100 fw-bold py-2 mt-2">এখনই শুরু করুন</a>
                         </div>
                     </div>
                 </div>
@@ -348,7 +319,7 @@ include 'header.php';
             <!-- CTA -->
             <div class="cta-dark shadow-lg mb-5">
                 <h2 class="fw-bold mb-3">আজই শুরু করুন আপনার Online Business Journey 🚀</h2>
-                <p class="cta-p mb-4">মাত্র ২০ মিনিটের ভিডিও দেখেই A to Z সবকিছু বুঝে যাবেন।</p>
+                <p class="cta-p mb-4 text-white-50">মাত্র ২০ মিনিটের ভিডিও দেখেই A to Z সবকিছু বুঝে যাবেন।</p>
                 <a href="payment.php" class="btn btn-light btn-lg rounded-pill px-5 fw-bold text-primary">🔥 এখনই এনরোল করুন</a>
             </div>
 
