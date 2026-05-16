@@ -12,6 +12,12 @@ $user_id = $_SESSION['user_id'];
 $query = mysqli_query($conn, "SELECT * FROM users WHERE id='$user_id'");
 $user = mysqli_fetch_assoc($query);
 
+// Redirect to Premium Files if already paid
+if ($user['payment_status'] == 'Paid') {
+    header("Location: premiumfiles.php");
+    exit();
+}
+
 $page_title = "Dashboard - coinstore.bd";
 
 // Styles
@@ -176,6 +182,9 @@ include 'header.php';
                 </a>
                 <a href="../referral/index.php" class="sidebar-link">
                     <i class="bi bi-gift"></i> এফিলিয়েট সিস্টেম
+                </a>
+                <a href="premiumfiles.php" class="sidebar-link">
+                    <i class="bi bi-cloud-arrow-down"></i> প্রিমিয়াম ফাইল
                 </a>
                 <a href="landingpage.php" class="sidebar-link" target="_blank">
                     <i class="bi bi-browser-safari"></i> ল্যান্ডিং পেজ

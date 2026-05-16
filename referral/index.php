@@ -155,6 +155,9 @@ include '../user/header.php';
                 <a href="index.php" class="sidebar-link active">
                     <i class="bi bi-gift"></i> এফিলিয়েট সিস্টেম
                 </a>
+                <a href="../user/premiumfiles.php" class="sidebar-link">
+                    <i class="bi bi-cloud-arrow-down"></i> প্রিমিয়াম ফাইল
+                </a>
                 <a href="../user/landingpage.php" class="sidebar-link" target="_blank">
                     <i class="bi bi-browser-safari"></i> ল্যান্ডিং পেজ
                 </a>
