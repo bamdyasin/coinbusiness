@@ -86,8 +86,8 @@ $extra_css = '
         .stats-item-box h3 { color: #10b981; font-weight: 800; margin-bottom: 5px; }
         .stats-label { font-size: 0.85rem !important; color: rgba(255,255,255,0.6); font-weight: 600; }
         
-        .section-title-box { text-align: center; margin: 40px 0 30px; }
-        .section-title-box h2 { font-weight: 700; font-size: 2rem; position: relative; display: inline-block; padding-bottom: 10px; }
+        .section-title-box { text-align: center; margin-bottom: 25px; }
+        .section-title-box h2 { font-weight: 700; font-size: 1.8rem; position: relative; display: inline-block; padding-bottom: 10px; margin-bottom: 0; }
         .section-title-box h2::after { content: ""; width: 60px; height: 4px; background: #3b82f6; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 10px; }
 
         /* Unified List Item Design */
@@ -223,9 +223,9 @@ include 'header.php';
                 </div>
             </div>
 
-            <!-- FEATURES CARD -->
-            <div class="section-title-box"><h2>কেন এই বিজনেস শুরু করবেন?</h2></div>
+            <!-- FEATURES CARD (Header Inside) -->
             <div class="app-card shadow-sm mb-4">
+                <div class="section-title-box"><h2>কেন এই বিজনেস শুরু করবেন?</h2></div>
                 <div class="list-item-row">
                     <div class="feature-icon-circle"><i class="bi bi-clock-history"></i></div>
                     <div class="feature-text-box">
@@ -256,9 +256,9 @@ include 'header.php';
                 </div>
             </div>
 
-            <!-- PACKAGES CARD (With Extra Info for Desktop) -->
-            <div class="section-title-box"><h2>এই ৩০০০ টাকায় কী কী পাচ্ছেন?</h2></div>
-            <div class="app-card shadow-sm">
+            <!-- PACKAGES CARD (Header Inside) -->
+            <div class="app-card shadow-sm mb-4">
+                <div class="section-title-box"><h2>এই ৩০০০ টাকায় কী কী পাচ্ছেন?</h2></div>
                 <div class="list-item-row">
                     <div class="feature-icon-circle"><img src="https://cdn-icons-png.flaticon.com/512/196/196578.png"></div>
                     <div class="feature-text-box">
