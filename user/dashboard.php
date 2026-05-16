@@ -12,15 +12,9 @@ $user_id = $_SESSION['user_id'];
 $query = mysqli_query($conn, "SELECT * FROM users WHERE id='$user_id'");
 $user = mysqli_fetch_assoc($query);
 
-// Count total referrals
-$my_code = $user['referral_code'];
-$ref_query = mysqli_query($conn, "SELECT COUNT(*) as total FROM users WHERE referred_by='$my_code'");
-$ref_data = mysqli_fetch_assoc($ref_query);
-$total_referrals = $ref_data['total'];
-
 $page_title = "Dashboard - coinstore.bd";
 
-// Specific CSS for dashboard
+// Styles
 $extra_css = '
     <style>
         body {
@@ -34,25 +28,7 @@ $extra_css = '
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 25px;
-        }
-        .motivation-card {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            border-radius: 20px;
-            padding: 30px;
-            position: relative;
-            overflow: hidden;
-        }
-        .video-container {
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            background: #000;
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            backdrop-filter: blur(10px);
         }
         .sidebar-link {
             display: flex;
@@ -69,51 +45,112 @@ $extra_css = '
             color: #3b82f6;
         }
         .sidebar-link i { margin-right: 15px; font-size: 1.2rem; }
-        .balance-card {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            border-radius: 15px;
-            padding: 20px;
-        }
-        .referral-box {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px dashed #3b82f6;
-            border-radius: 12px;
-            padding: 20px;
-        }
-        @media (max-width: 991px) {
-            .sidebar-col { display: none; }
-            .motivation-card h2 { font-size: 1.4rem; }
-            .motivation-card p { font-size: 0.9rem; }
-        }
-        @media (max-width: 576px) {
-            body { padding-top: 60px; }
-            .app-card { padding: 15px; }
-            .motivation-card { padding: 20px; }
-        }
-
-        /* Locked Section Styles */
-        .locked-section {
+        
+        /* Dashboard Specific Landing UI */
+        .hero-box {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 30px;
             position: relative;
             overflow: hidden;
         }
-        .locked-blur {
-            filter: blur(8px);
-            pointer-events: none;
-            user-select: none;
-            opacity: 0.6;
+        .hero-box h1 { font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
+        .hero-box h1 span { color: #3b82f6; }
+        
+        .hero-card-img {
+            background: linear-gradient(180deg,#161c52,#0b1033);
+            border-radius: 25px;
+            padding: 15px;
+            border: 1px solid rgba(255,255,255,0.08);
+            position: relative;
         }
-        .lock-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+        .hero-card-img img { width: 100%; border-radius: 15px; }
+        
+        .floating-badge-dark {
+            position: absolute; bottom: 10px; right: 10px;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px);
+            border: 2px solid #3b82f6; padding: 10px 15px; border-radius: 15px;
+            text-align: center; color: #fff;
+        }
+        .floating-badge-dark h4 { margin: 0; color: #10b981; font-weight: 800; }
+
+        .stats-item-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .stats-item-box h3 { color: #10b981; font-weight: 800; margin-bottom: 5px; }
+        
+        .section-title-box { text-align: center; margin: 40px 0 30px; }
+        .section-title-box h2 { font-weight: 700; font-size: 1.8rem; position: relative; display: inline-block; padding-bottom: 10px; }
+        .section-title-box h2::after { content: ""; width: 60px; height: 4px; background: #3b82f6; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 10px; }
+
+        /* Meticulous Feature List */
+        .feature-item-list {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            background: rgba(15, 23, 42, 0.4);
-            z-index: 10;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 20px;
-            text-align: center;
             padding: 20px;
+            margin-bottom: 15px;
+            transition: 0.3s;
+        }
+        .feature-item-list:hover {
+            background: rgba(59, 130, 246, 0.05);
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+        .feature-icon-circle {
+            min-width: 60px; width: 60px; height: 60px;
+            background: rgba(59, 130, 246, 0.1); color: #3b82f6;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        .feature-text-box h6 { margin: 0 0 5px 0; font-weight: 700; color: #fff; }
+        .feature-text-box p { margin: 0; font-size: 0.9rem; color: rgba(255,255,255,0.6); }
+
+        .package-card-box {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 25px;
+            height: 100%;
+        }
+        .package-num {
+            width: 40px; height: 40px; background: #3b82f6; color: white;
+            border-radius: 10px; display: flex; align-items: center; justify-content: center;
+            font-weight: 800; margin-bottom: 15px;
+        }
+        
+        .course-box-dark {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 24px;
+            padding: 35px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .course-list-dark li { margin-bottom: 12px; font-size: 1.1rem; color: rgba(255,255,255,0.8); }
+        
+        .refund-card-dark {
+            border: 2px dashed rgba(59, 130, 246, 0.4);
+            border-radius: 20px;
+            padding: 25px;
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .cta-dark {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            border-radius: 24px;
+            padding: 50px 30px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        @media (max-width: 991px) { 
+            .sidebar-col { display: none; } 
+            .hero-box h1 { font-size: 1.8rem; }
         }
     </style>';
 
@@ -122,9 +159,9 @@ include 'header.php';
 
 <div class="container mt-4">
     <div class="row g-4">
-        <!-- Desktop Sidebar -->
+        <!-- Sidebar -->
         <div class="col-lg-3 sidebar-col">
-            <div class="app-card p-3">
+            <div class="app-card p-3 shadow">
                 <a href="dashboard.php" class="sidebar-link active">
                     <i class="bi bi-speedometer2"></i> ড্যাশবোর্ড
                 </a>
@@ -134,6 +171,9 @@ include 'header.php';
                 <a href="../referral/index.php" class="sidebar-link">
                     <i class="bi bi-gift"></i> এফিলিয়েট সিস্টেম
                 </a>
+                <a href="landingpage.php" class="sidebar-link" target="_blank">
+                    <i class="bi bi-browser-safari"></i> ল্যান্ডিং পেজ
+                </a>
                 <a href="payment.php" class="sidebar-link">
                     <i class="bi bi-wallet2"></i> পেমেন্ট হিস্ট্রি
                 </a>
@@ -142,150 +182,151 @@ include 'header.php';
                     <i class="bi bi-box-arrow-right"></i> লগআউট
                 </a>
             </div>
-            
-            <div class="app-card mt-4 <?php echo ($user['payment_status'] == 'Unpaid') ? 'locked-section' : ''; ?>">
-                <?php if ($user['payment_status'] == 'Unpaid'): ?>
-                    <div class="lock-overlay">
-                        <i class="bi bi-lock-fill fs-2 text-warning mb-2"></i>
-                        <small class="fw-bold">পেমেন্ট করুন</small>
-                    </div>
-                <?php endif; ?>
-                <div class="<?php echo ($user['payment_status'] == 'Unpaid') ? 'locked-blur' : ''; ?> p-1">
-                    <div class="text-center mb-3">
-                        <i class="bi bi-qr-code-scan text-primary" style="font-size: 3rem;"></i>
-                        <h6 class="fw-bold mt-2 mb-1">Screen QR Scanner</h6>
-                        <span class="badge bg-primary bg-opacity-10 text-primary small rounded-pill">Mobile & Tablet Support</span>
-                    </div>
-                    
-                    <div class="text-start mb-3 border-top border-white border-opacity-10 pt-3">
-                        <p class="small text-white-75 mb-2" style="font-size: 0.75rem;">
-                            <i class="bi bi-check2-circle text-success me-1"></i> স্ক্রিন স্ক্যান করে লিঙ্ক বের করুন
-                        </p>
-                        <p class="small text-white-75 mb-2" style="font-size: 0.75rem;">
-                            <i class="bi bi-check2-circle text-success me-1"></i> QR কোড থেকে দ্রুত এক্সেস
-                        </p>
-                        <p class="small text-white-75 mb-0" style="font-size: 0.75rem;">
-                            <i class="bi bi-check2-circle text-success me-1"></i> স্মার্টফোন ও ট্যাবলেটে ব্যবহারযোগ্য
-                        </p>
-                    </div>
-
-                    <p class="text-white-50 extra-small mb-3" style="font-size: 0.7rem; line-height: 1.4;">
-                        যেকোনো মোবাইলের স্ক্রিন স্ক্যান করে সরাসরি লিঙ্ক জেনারেট করতে এই অ্যাপটি ব্যবহার করুন। এটি মোবাইল এবং ট্যাবলেট উভয় ডিভাইসেই স্মুথলি কাজ করে।
-                    </p>
-
-                    <a href="#" class="btn btn-primary btn-sm w-100 rounded-pill py-2 fw-bold shadow-sm">
-                        <i class="bi bi-cloud-download me-1"></i> এখনই ডাউনলোড করুন
-                    </a>
-                </div>
-            </div>
         </div>
 
         <!-- Main Content -->
         <div class="col-lg-9">
             
-            <!-- OVERVIEW VIEW -->
-            <div class="motivation-card mb-4 shadow">
-                <h2 class="fw-bold">সফলতার সিঁড়িতে আপনার প্রথম পদক্ষেপ!</h2>
-                <p class="mb-0">আপনার প্রতিদিনের পরিশ্রমই আপনাকে বড় বিজনেসের দিকে নিয়ে যাবে। لگے থাকুন, সফলতা নিশ্চিত।</p>
-            </div>
+            <!-- HERO SECTION -->
+            <div class="hero-box shadow">
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <h1>মাত্র ৩০০০ টাকায় শুরু করুন <span>অনলাইন বিজনেস</span></h1>
+                        <p class="text-white-50">২৫% পর্যন্ত প্রফিট, ৮০%+ রিপিট কাস্টমার এবং যেকোনো জায়গা থেকে ব্যবসা পরিচালনার সুযোগ।</p>
+                        
+                        <div class="row g-2 text-center mt-3 mb-4">
+                            <div class="col-4"><div class="stats-item-box"><h3>২৫%</h3><small class="text-white-50 small" style="font-size: 0.6rem;">নিট-প্রফিট</small></div></div>
+                            <div class="col-4"><div class="stats-item-box"><h3>৮০%+</h3><small class="text-white-50 small" style="font-size: 0.6rem;">রিপিট-Sell</small></div></div>
+                            <div class="col-4"><div class="stats-item-box"><h3>৩০০০৳</h3><small class="text-white-50 small" style="font-size: 0.6rem;">স্বল্প-পুজি</small></div></div>
+                        </div>
 
-            <!-- Quick Stats -->
-            <div class="row g-3 mb-4 text-center">
-                <div class="col-6 col-md-4">
-                    <div class="app-card h-100 py-3">
-                        <h3 class="fw-bold text-primary mb-0">৳<?php echo number_format($user['balance'], 0); ?></h3>
-                        <small class="text-white-50">মোট আয়</small>
+                        <div class="d-flex gap-2 mt-4 flex-wrap">
+                            <a href="payment.php" class="btn btn-primary rounded-pill px-4 fw-bold">🔥 এখনই এনরোল করুন</a>
+                            <a href="#course-details" class="btn btn-outline-light rounded-pill px-4 fw-bold">▶ ভিডিও দেখুন</a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-6 col-md-4">
-                    <div class="app-card h-100 py-3">
-                        <h3 class="fw-bold text-primary mb-0"><?php echo $total_referrals; ?></h3>
-                        <small class="text-white-50">মোট রেফারেল</small>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 d-none d-md-block">
-                    <div class="app-card h-100 py-3">
-                        <?php 
-                            if ($user['payment_status'] == 'Paid') {
-                                $display_status = 'Premium User';
-                                $status_color = 'text-warning';
-                            } else {
-                                $display_status = 'Verified User';
-                                $status_color = 'text-success';
-                            }
-                        ?>
-                        <h3 class="fw-bold <?php echo $status_color; ?> mb-0"><?php echo $display_status; ?></h3>
-                        <small class="text-white-50">একাউন্ট স্ট্যাটাস</small>
+                    <div class="col-lg-5 text-center mt-4 mt-lg-0">
+                        <div class="hero-card-img mx-auto" style="max-width: 400px;">
+                            <img src="images.jpg" alt="Business">
+                            <div class="floating-badge-dark">
+                                <small class="text-white-50" style="font-size: 0.6rem; display: block; text-transform: uppercase;">Net Profit</small>
+                                <h4>25%</h4>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Video Section -->
-            <div class="app-card mb-4 locked-section">
-                <?php if ($user['payment_status'] == 'Unpaid'): ?>
-                    <div class="lock-overlay">
-                        <i class="bi bi-lock-fill display-4 text-warning mb-3"></i>
-                        <h4 class="fw-bold text-white">ভিডিওটি লক করা আছে</h4>
-                        <p class="text-white-50 mb-3 px-md-5">এই ট্রেনিং ভিডিওটি দেখতে এবং ডাউনলোড করতে আপনার একাউন্টটি এক্টিভ করুন।</p>
-                        <a href="payment.php" class="btn btn-warning rounded-pill px-4 fw-bold">একাউন্ট এক্টিভ করুন</a>
+            <!-- DETAILED FEATURES LIST (Matching Landing Page Exactly) -->
+            <div class="section-title-box"><h2>কেন এই বিজনেস শুরু করবেন?</h2></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="feature-item-list">
+                        <div class="feature-icon-circle"><i class="bi bi-clock-history"></i></div>
+                        <div class="feature-text-box">
+                            <h6>Long Term Business</h6>
+                            <p>দীর্ঘ সময় ধরে ব্যবসা পরিচালনা করা সম্ভব।</p>
+                        </div>
                     </div>
-                <?php endif; ?>
-
-                <div class="<?php echo ($user['payment_status'] == 'Unpaid') ? 'locked-blur' : ''; ?>">
-                    <h5 class="fw-bold mb-3"><i class="bi bi-play-circle text-primary"></i> ট্রেনিং ভিডিও দেখুন</h5>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-item-list">
+                        <div class="feature-icon-circle"><i class="bi bi-people-fill"></i></div>
+                        <div class="feature-text-box">
+                            <h6>Repeat Customer</h6>
+                            <p>৮০%+ কাস্টমার বারবার অর্ডার করে।</p>
+                        </div>
                     </div>
-                    <p class="mt-3 text-white-50 small mb-0">
-                        ভিডিওটি মনোযোগ দিয়ে দেখে আপনার বিজনেস সেটআপ করুন। যেকোনো সমস্যায় সাপোর্টে যোগাযোগ করুন।
-                    </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-item-list">
+                        <div class="feature-icon-circle"><i class="bi bi-wallet2"></i></div>
+                        <div class="feature-text-box">
+                            <h6>Low Investment</h6>
+                            <p>মাত্র ৩০০০ টাকা দিয়েই শুরু করা সম্ভব।</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-item-list">
+                        <div class="feature-icon-circle"><i class="bi bi-phone-fill"></i></div>
+                        <div class="feature-text-box">
+                            <h6>Work Anywhere</h6>
+                            <p>শুধু মোবাইল দিয়েই ব্যবসা পরিচালনা সম্ভব।</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- App Download (Mobile only quick link) -->
-            <div class="d-lg-none mb-4 locked-section">
-                <?php if ($user['payment_status'] == 'Unpaid'): ?>
-                    <div class="lock-overlay" style="padding: 10px;">
-                        <i class="bi bi-lock-fill text-warning fs-3 mb-2"></i>
-                        <h6 class="fw-bold">পেমেন্ট করে অ্যাপ এক্সেস করুন</h6>
-                        <a href="payment.php" class="btn btn-warning btn-sm rounded-pill px-3 mt-2 fw-bold">Active Account</a>
+            <!-- PACKAGES -->
+            <div class="section-title-box"><h2>এই ৩০০০ টাকায় কী কী পাচ্ছেন?</h2></div>
+            <div class="row g-3">
+                <div class="col-md-6 col-lg-3">
+                    <div class="package-card-box">
+                        <div class="package-num">01</div>
+                        <h6 class="fw-bold mb-2">Visa Card</h6>
+                        <p class="text-primary fw-bold mb-1 small">10 USD = 1300 টাকা</p>
+                        <p class="extra-small text-white-50 mb-0" style="font-size: 0.7rem;">যা ব্যাংকের মাধ্যমে করতে পাসপোর্টসহ ১০–১২ হাজার টাকা লাগতে পারে।</p>
                     </div>
-                <?php endif; ?>
-                
-                <div class="app-card border-primary border-opacity-25 <?php echo ($user['payment_status'] == 'Unpaid') ? 'locked-blur' : ''; ?>">
-                    <div class="d-flex align-items-center gap-3 mb-3">
-                        <div class="bg-primary bg-opacity-10 p-3 rounded-3">
-                            <i class="bi bi-qr-code-scan text-primary fs-2"></i>
-                        </div>
-                        <div>
-                            <h5 class="fw-bold mb-0">Screen QR Scanner</h5>
-                            <span class="badge bg-primary bg-opacity-10 text-primary small rounded-pill">Mobile & Tablet Support</span>
-                        </div>
-                    </div>
-
-                    <div class="row g-2 mb-3 text-start">
-                        <div class="col-12">
-                            <small class="text-white-75 d-block"><i class="bi bi-check2 text-success me-1"></i> স্ক্রিন স্ক্যান করে লিঙ্ক বের করুন</small>
-                        </div>
-                        <div class="col-12">
-                            <small class="text-white-75 d-block"><i class="bi bi-check2 text-success me-1"></i> QR কোড থেকে দ্রুত এক্সেস</small>
-                        </div>
-                        <div class="col-12">
-                            <small class="text-white-75 d-block"><i class="bi bi-check2 text-success me-1"></i> স্মার্টফোন ও ট্যাবলেটে ব্যবহারযোগ্য</small>
-                        </div>
-                    </div>
-
-                    <p class="text-white-50 small mb-3">যেকোনো মোবাইলের স্ক্রিন স্ক্যান করে সরাসরি লিঙ্ক জেনারেট করতে এই অ্যাপটি ব্যবহার করুন। এটি মোবাইল এবং ট্যাবলেট উভয় ডিভাইসেই স্মুথলি কাজ করে।</p>
-
-                    <a href="#" class="btn btn-primary w-100 rounded-pill py-2 fw-bold shadow-sm">
-                        <i class="bi bi-cloud-download me-2"></i> এখনই ডাউনলোড করুন
-                    </a>
                 </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="package-card-box">
+                        <div class="package-num">02</div>
+                        <h6 class="fw-bold mb-2">Account Balance</h6>
+                        <p class="text-primary fw-bold mb-1 small">5.5 USD = 700 টাকা</p>
+                        <p class="extra-small text-white-50 mb-0" style="font-size: 0.7rem;">এটা আপনার একাউন্ট এ থাকবে এবং এটাই আপনার বিজনেসের পুজি।</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="package-card-box">
+                        <div class="package-num">03</div>
+                        <h6 class="fw-bold mb-2">Android App</h6>
+                        <p class="text-primary fw-bold mb-1 small">প্রিমিয়াম প্রাইস = 1000 টাকা</p>
+                        <p class="extra-small text-white-50 mb-0" style="font-size: 0.7rem;">এটা কম্পিউটার এর বিকল্প হিসেবে কাজ করবে, যেকোনো জায়গা থেকে কাজ করতে পারবেন।</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="package-card-box">
+                        <div class="package-num">04</div>
+                        <h6 class="fw-bold mb-2">Website Code</h6>
+                        <p class="text-primary fw-bold mb-1 small">FREE Website Code</p>
+                        <p class="extra-small text-white-50 mb-0" style="font-size: 0.7rem;">কাস্টমার বাড়লে ওয়েবসাইট থাকলে ভালো এবং বিসনেস বড় করা সহজ হয়।</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COURSE & REFUND -->
+            <div id="course-details" class="course-box-dark mt-5">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-7">
+                        <h3 class="fw-bold mb-4">কোর্সে যা যা থাকছে</h3>
+                        <ul class="course-list-dark list-unstyled mb-0">
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i> Full Video Tutorial</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i> Business Setup Guide</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i> Android App Setup</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i> Customer Handling System</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i> Support & Guidance</li> 
+                        </ul>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="refund-card-dark text-center">
+                            <h4 class="fw-bold mb-3">Refund Guarantee <i class="bi bi-patch-check-fill text-primary"></i></h4>
+                            <p class="small text-white-50">Business Details দেখার পর Interested না হলে সম্পূর্ণ টাকা Refund করে দেওয়া হবে।</p>
+                            <a href="payment.php" class="btn btn-primary rounded-pill w-100 fw-bold">এখনই শুরু করুন</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-dark shadow-lg mb-5">
+                <h2 class="fw-bold mb-3">আজই শুরু করুন আপনার Online Business Journey 🚀</h2>
+                <p class="text-white-50 mb-4">মাত্র ২০ মিনিটের ভিডিও দেখেই A to Z সবকিছু বুঝে যাবেন।</p>
+                <a href="payment.php" class="btn btn-light btn-lg rounded-pill px-5 fw-bold text-primary">🔥 এখনই এনরোল করুন</a>
             </div>
 
             <!-- Extra spacer for mobile bottom nav -->
             <div class="d-lg-none" style="height: 50px;"></div>
-
         </div>
     </div>
 </div>

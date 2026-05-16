@@ -11,7 +11,7 @@
         <i class="bi bi-speedometer2"></i> হোম
     </a>
     <a href="<?php echo $ref_dir; ?>index.php" class="bottom-nav-item <?php echo ($is_in_referral) ? 'active' : ''; ?>">
-        <i class="bi bi-gift"></i> রেফার
+        <i class="bi bi-gift"></i> এফিলিয়েট
     </a>
     <a href="<?php echo $user_dir; ?>payment.php" class="bottom-nav-item <?php echo ($current_page == 'payment.php') ? 'active' : ''; ?>">
         <i class="bi bi-wallet2"></i> পেমেন্ট

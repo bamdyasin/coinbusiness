@@ -150,11 +150,14 @@
                 <a class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'otp_requests.php') ? 'active' : ''; ?>" href="otp_requests.php">
                     <i class="bi bi-shield-lock-fill"></i> ওটিপি রিকোয়েস্ট
                 </a>
-                <a class="nav-link" href="users.php">
+                <a class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'users.php') ? 'active' : ''; ?>" href="users.php">
                     <i class="bi bi-people-fill"></i> ইউজার লিস্ট
                 </a>
                 <a class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'settings.php') ? 'active' : ''; ?>" href="settings.php">
                     <i class="bi bi-gear-fill"></i> পেমেন্ট সেটিংস
+                </a>
+                <a class="nav-link" href="../user/dashboard.php" target="_blank">
+                    <i class="bi bi-speedometer"></i> ইউজার ড্যাশবোর্ড
                 </a>
                 <hr class="border-secondary opacity-25">
                 <a class="nav-link text-danger" href="logout.php">

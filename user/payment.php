@@ -149,7 +149,10 @@ include 'header.php';
                     <i class="bi bi-person-circle"></i> প্রোফাইল
                 </a>
                 <a href="../referral/index.php" class="sidebar-link">
-                    <i class="bi bi-gift"></i> রেফারেল সিস্টেম
+                    <i class="bi bi-gift"></i> এফিলিয়েট সিস্টেম
+                </a>
+                <a href="landingpage.php" class="sidebar-link" target="_blank">
+                    <i class="bi bi-browser-safari"></i> ল্যান্ডিং পেজ
                 </a>
                 <a href="payment.php" class="sidebar-link active">
                     <i class="bi bi-wallet2"></i> পেমেন্ট হিস্ট্রি

@@ -71,11 +71,65 @@
     <a href="users.php" class="bottom-nav-item <?php echo ($current_page == 'users.php') ? 'active' : ''; ?>">
         <i class="bi bi-people-fill"></i> ইউজার
     </a>
+    <a href="../user/dashboard.php" class="bottom-nav-item" target="_blank">
+        <i class="bi bi-speedometer"></i> ভিজিট
+    </a>
 </div>
 <?php endif; ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+// --- Browser Notification Logic ---
+let lastPremiumCount = localStorage.getItem('last_premium_count') || 0;
+let lastOtpCount = localStorage.getItem('last_otp_count') || 0;
+
+function checkAdminNotifications() {
+    fetch('check_notifications.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) return;
+
+            // Check for new Premium Requests
+            if (data.premium > lastPremiumCount) {
+                showBrowserNotification("New Premium Request!", `You have ${data.premium} pending premium requests.`);
+            }
+            
+            // Check for new OTP Requests
+            if (data.otp > lastOtpCount) {
+                showBrowserNotification("New OTP Request!", `A new OTP request has been generated.`);
+            }
+
+            // Update stored counts
+            lastPremiumCount = data.premium;
+            lastOtpCount = data.otp;
+            localStorage.setItem('last_premium_count', lastPremiumCount);
+            localStorage.setItem('last_otp_count', lastOtpCount);
+        })
+        .catch(err => console.error('Notification check failed:', err));
+}
+
+function showBrowserNotification(title, body) {
+    if (!("Notification" in window)) return;
+
+    if (Notification.permission === "granted") {
+        new Notification(title, { body: body, icon: '../landing/images.jpg' });
+    } else if (Notification.permission !== "denied") {
+        Notification.requestPermission().then(permission => {
+            if (permission === "granted") {
+                new Notification(title, { body: body, icon: '../landing/images.jpg' });
+            }
+        });
+    }
+}
+
+// Request permission on load
+if ("Notification" in window && Notification.permission !== "granted" && Notification.permission !== "denied") {
+    Notification.requestPermission();
+}
+
+// Start polling every 15 seconds
+setInterval(checkAdminNotifications, 15000);
+
 function copyOTP(otp) {
     navigator.clipboard.writeText(otp).then(() => {
         const toast = document.createElement('div');
