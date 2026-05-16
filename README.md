@@ -46,7 +46,7 @@ A professional web application for selling digital assets (TikTok Top-Ups, Views
 - `/user`: Customer experience (Registration, Login, Dashboard, Payment).
 - `/shop`: Digital product catalogs.
 - `/referral`: Affiliate tracking logic.
-- `/includes`: Core DB connection and global configurations.
+- `/includes`: Core DB connection, global configurations, and root UI components (Header/Footer).
 
 ---
 Developed with ❤️ for CoinStore.bd

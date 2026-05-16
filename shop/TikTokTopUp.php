@@ -1,40 +1,40 @@
 <?php
 $page_title = 'TikTok Top-Up';
-$root_path = '../';
-include '../includes/header.php';
+include 'header.php';
 ?>
 
 <!-- Shop Specific CSS -->
-<style>
-    /* You can keep or move these to shop/style.css */
-</style>
 <link rel="stylesheet" href="style.css">
 
-<div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-lg-7">
+<div class="container mt-4 mb-5">
+    <div class="row g-4">
+        <!-- Sidebar -->
+        <?php include 'sidebar.php'; ?>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
             
-            <!-- Professional Hero Section -->
-            <div class="hero-section text-center mb-5">
-                <div class="hero-glow"></div>
-                <p class="hero-subtitle mb-2">Premium Growth Service</p>
-                <h1 class="hero-slogan">ভাইরাল হোন <span style="color: #fe2c55; -webkit-text-fill-color: #fe2c55;">নিজের স্টাইলে</span></h1>
-                <p class="text-white-50 mt-3">ক্যাটাগরি নির্বাচন করুন</p>
-            </div>
+            <div class="app-card shadow-lg">
+                <!-- Professional Hero Section Inside Card -->
+                <div class="hero-section text-center mb-5">
+                    <div class="hero-glow"></div>
+                    <p class="hero-subtitle mb-2">Premium Growth Service</p>
+                    <h1 class="hero-slogan">ভাইরাল হোন <span style="color: #fe2c55; -webkit-text-fill-color: #fe2c55;">নিজের স্টাইলে</span></h1>
+                    <p class="text-white-50 mt-3">ক্যাটাগরি নির্বাচন করুন</p>
+                </div>
 
-            <!-- Tab Navigation (Buttons Only) -->
-            <div class="tabs-btn-container">
-                <ul class="nav nav-pills" id="tiktokTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="boost-tab" data-bs-toggle="pill" data-bs-target="#boost" type="button" role="tab" aria-controls="boost" aria-selected="true"><i class="bi bi-rocket-takeoff"></i> Boost Now</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="coin-tab" data-bs-toggle="pill" data-bs-target="#coin" type="button" role="tab" aria-controls="coin" aria-selected="false"><i class="bi bi-coin"></i> Get Coin</button>
-                    </li>
-                </ul>
-            </div>
+                <!-- Tab Navigation (Buttons Only) -->
+                <div class="tabs-btn-container">
+                    <ul class="nav nav-pills" id="tiktokTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="boost-tab" data-bs-toggle="pill" data-bs-target="#boost" type="button" role="tab" aria-controls="boost" aria-selected="true"><i class="bi bi-rocket-takeoff"></i> Boost Now</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="coin-tab" data-bs-toggle="pill" data-bs-target="#coin" type="button" role="tab" aria-controls="coin" aria-selected="false"><i class="bi bi-coin"></i> Get Coin</button>
+                        </li>
+                    </ul>
+                </div>
 
-            <div class="order-form-card shadow-lg">
                 <form action="../user/payment.php" method="GET">
                     <input type="hidden" name="product" value="TikTok">
                     
@@ -220,4 +220,4 @@ include '../includes/header.php';
     });
 </script>
 
-<?php include '../includes/footer.php'; ?>
+<?php include 'footer.php'; ?>

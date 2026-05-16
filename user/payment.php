@@ -134,7 +134,8 @@ $extra_css = '
 </style>
 ';
 
-include 'header.php';
+$root_path = '../';
+include '../includes/header.php';
 ?>
 
 <div class="container mt-4">

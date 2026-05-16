@@ -138,7 +138,8 @@ $extra_css = '
 </style>
 ';
 
-include '../user/header.php';
+$root_path = '../';
+include '../includes/header.php';
 ?>
 
 <div class="container mt-4">
@@ -339,4 +340,4 @@ function showFeedback(btnElement) {
 }
 </script>
 
-<?php include '../user/footer.php'; ?>
+<?php include '../includes/footer.php'; ?>

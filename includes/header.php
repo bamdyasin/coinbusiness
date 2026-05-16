@@ -1,5 +1,9 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+// Set default root path
+$root_path = isset($root_path) ? $root_path : '';
 ?>
 <!DOCTYPE html>
 <html lang="bn">
@@ -14,11 +18,13 @@ session_start();
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom Style -->
-    <?php $root_path = isset($root_path) ? $root_path : ''; ?>
     <link rel="stylesheet" href="<?php echo $root_path; ?>style.css">
     <?php if (isset($extra_css)) echo $extra_css; ?>
     <style>
-        body { padding-top: 85px; }
+        body { padding-top: 75px; }
+        @media (max-width: 767px) {
+            body { padding-top: 70px; }
+        }
         .navbar {
             position: fixed;
             top: 0;
@@ -31,6 +37,7 @@ session_start();
         }
         .navbar-brand {
             font-size: 1.4rem;
+            color: white !important;
         }
         /* Offcanvas Custom Styles */
         .offcanvas {
@@ -63,18 +70,18 @@ session_start();
         .search-input {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #4ade80; /* Light green */
+            color: #3b82f6;
             border-radius: 50px 0 0 50px;
             padding-left: 20px;
         }
         .search-input::placeholder {
-            color: rgba(74, 222, 128, 0.6); /* Semi-transparent light green */
+            color: rgba(59, 130, 246, 0.6);
         }
         .search-input:focus {
             background: rgba(255, 255, 255, 0.1);
-            border-color: #4ade80;
+            border-color: #3b82f6;
             box-shadow: none;
-            color: #4ade80;
+            color: #3b82f6;
         }
         .search-btn {
             border-radius: 0 50px 50px 0;
@@ -115,6 +122,9 @@ session_start();
       </div>
     </form>
     <ul class="navbar-nav pe-3">
+      <li class="nav-item">
+          <a class="nav-link text-white" href="<?php echo $root_path; ?>index.php">হোম</a>
+      </li>
       <li class="nav-item">
           <a class="nav-link text-white" href="<?php echo $root_path; ?>landing/landingpage.php">রিসেলার হন</a>
       </li>

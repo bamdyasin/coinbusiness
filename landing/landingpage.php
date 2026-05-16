@@ -29,28 +29,11 @@ if (!empty($ref_code)) {
         $referrer_name = $row['name'];
     }
 }
-?>
-<!DOCTYPE html>
-<html lang="bn">
-<head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>coinstore.bd Course</title>
-
-<!-- Bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Bootstrap Icons -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- Custom Style -->
+$page_title = 'coinstore.bd Course';
+$root_path = '../';
+$extra_css = '
 <link rel="stylesheet" href="style.css">
-
 <style>
     .ref-toast {
         position: fixed;
@@ -83,10 +66,15 @@ if (!empty($ref_code)) {
         justify-content: center;
         font-weight: bold;
     }
-</style>
+    @media (max-width: 991px) {
+        body {
+            padding-bottom: 80px;
+        }
+    }
+</style>';
 
-</head>
-<body>
+include '../includes/header.php';
+?>
 
 <?php if (!empty($referrer_name)): ?>
 <div class="ref-toast" id="refToast">
@@ -108,53 +96,6 @@ if (!empty($ref_code)) {
     }, 2000); // 2 seconds
 </script>
 <?php endif; ?>
-
-<!-- NAVBAR -->
-
-<nav class="navbar navbar-expand-lg">
-
-  <div class="container">
-
-    <a class="navbar-brand" href="../user/login.php">
-      🚀 Smart Business <i class="bi bi-patch-check-fill text-primary"></i>
-    </a>
-
-    <button class="navbar-toggler bg-white"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navMenu">
-
-      <span class="navbar-toggler-icon"></span>
-
-    </button>
-
-    <div class="collapse navbar-collapse" id="navMenu">
-
-      <ul class="navbar-nav ms-auto">
-
-        <li class="nav-item">
-          <a class="nav-link" href="../payment/payment.php">হোম</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="../payment/payment.html">সুবিধা</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="../payment/payment.html">কোর্স</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="../payment/payment.html">যোগাযোগ</a>
-        </li>
-
-      </ul>
-
-    </div>
-
-  </div>
-
-</nav>
 
 <!-- HERO -->
 
@@ -574,25 +515,4 @@ if (!empty($ref_code)) {
 
 </section>
 
-<!-- FOOTER -->
-
-<footer>
-
-  <div class="container">
-
-    <h4 class="fw-bold">
-      🚀 Smart Business
-    </h4>
-
-    <p class="mt-3 mb-0">
-      © 2026 All Rights Reserved
-    </p>
-
-  </div>
-
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-</body>
-</html>
+<?php include '../includes/footer.php'; ?>

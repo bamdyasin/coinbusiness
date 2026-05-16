@@ -30,7 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $page_title = "Forgot Password - coinstore.bd";
-include 'header.php';
+$root_path = '../';
+include '../includes/header.php';
 ?>
 
 <div class="auth-body">
@@ -61,10 +62,10 @@ include 'header.php';
                         <a href="login.php" class="main-color text-decoration-none fw-bold">Back to Login</a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
 
-<?php include 'footer.php'; ?>
+                <?php include '../includes/footer.php'; ?>

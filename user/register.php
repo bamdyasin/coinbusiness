@@ -83,7 +83,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $page_title = "Register - coinstore.bd";
-include 'header.php';
+$root_path = '../';
+include '../includes/header.php';
 ?>
 
 <div class="auth-container">
@@ -169,5 +170,4 @@ include 'header.php';
 </div>
 </div>
 
-<?php include 'footer.php'; ?>
-hp'; ?>
+<?php include 'footer.php'; ?> 

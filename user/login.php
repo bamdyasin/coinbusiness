@@ -33,7 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $page_title = "Login - coinstore.bd";
-include 'header.php';
+$root_path = '../';
+include '../includes/header.php';
 ?>
 
 <div class="auth-body">
@@ -83,10 +84,10 @@ include 'header.php';
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-</div>
-</div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
 
-<?php include 'footer.php'; ?>
+            <?php include '../includes/footer.php'; ?>

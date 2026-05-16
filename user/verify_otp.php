@@ -30,7 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $page_title = "Verify OTP - coinstore.bd";
-include 'header.php';
+$root_path = '../';
+include '../includes/header.php';
 ?>
 
 <div class="auth-body">

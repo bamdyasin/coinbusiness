@@ -83,14 +83,20 @@ $extra_css = '
         }
         .floating-badge-dark h4 { margin: 0; color: #10b981; font-weight: 800; }
 
-        .stats-item-box {
+        .stats-card {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 15px;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 22px;
+            padding: 15px 10px;
+            backdrop-filter: blur(12px);
         }
-        .stats-item-box h3 { color: #10b981; font-weight: 800; margin-bottom: 5px; }
-        .stats-label { font-size: 0.85rem !important; color: rgba(255,255,255,0.6); font-weight: 600; }
+        .stats-item {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 15px 10px;
+        }
+        .stats-item h3 { color: #00ff99; font-weight: 800; margin-bottom: 5px; }
+        .stats-item p { font-size: 0.85rem !important; color: rgba(255,255,255,0.6); font-weight: 600; margin-bottom: 0; }
         
         .section-title-box { text-align: center; margin-bottom: 25px; }
         .section-title-box h2 { font-weight: 700; font-size: 1.8rem; position: relative; display: inline-block; padding-bottom: 10px; margin-bottom: 0; }
@@ -166,7 +172,8 @@ $extra_css = '
         @media (max-width: 991px) { .sidebar-col { display: none; } .hero-box h1 { font-size: 1.8rem; } }
     </style>';
 
-include 'header.php';
+$root_path = '../';
+include '../includes/header.php';
 ?>
 
 <div class="container mt-4">
@@ -209,10 +216,12 @@ include 'header.php';
                         <h1>মাত্র ৩০০০ টাকায় শুরু করুন <span>অনলাইন বিজনেস</span></h1>
                         <p class="text-white-50">২৫% পর্যন্ত প্রফিট, ৮০%+ রিপিট কাস্টমার এবং যেকোনো জায়গা থেকে ব্যবসা পরিচালনার সুযোগ।</p>
                         
-                        <div class="row g-2 text-center mt-3 mb-4">
-                            <div class="col-4"><div class="stats-item-box"><h3>২৫%</h3><div class="stats-label">নিট-প্রফিট</div></div></div>
-                            <div class="col-4"><div class="stats-item-box"><h3>৮০%+</h3><div class="stats-label">রিপিট-Sell</div></div></div>
-                            <div class="col-4"><div class="stats-item-box"><h3>৩০০০৳</h3><div class="stats-label">স্বল্প-পুজি</div></div></div>
+                        <div class="stats-card mt-3 mb-4">
+                            <div class="row g-2 text-center">
+                                <div class="col-4"><div class="stats-item"><h3>২৫%</h3><p>নিট-প্রফিট</p></div></div>
+                                <div class="col-4"><div class="stats-item"><h3>৮০%+</h3><p>রিপিট-Sell</p></div></div>
+                                <div class="col-4"><div class="stats-item"><h3>৩০০০৳</h3><p>স্বল্প-পুজি</p></div></div>
+                            </div>
                         </div>
 
                         <div class="d-flex gap-2 mt-4 flex-wrap">
@@ -338,4 +347,4 @@ include 'header.php';
     </div>
 </div>
 
-<?php include 'footer.php'; ?>
+<?php include '../includes/footer.php'; ?>

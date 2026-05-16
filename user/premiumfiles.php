@@ -87,7 +87,8 @@ $extra_css = '
         @media (max-width: 991px) { .sidebar-col { display: none; } }
     </style>';
 
-include 'header.php';
+$root_path = '../';
+include '../includes/header.php';
 ?>
 
 <div class="container mt-4">

@@ -2,135 +2,6 @@
    PROFESSIONAL GAMING UI (POLISHED)
 ========================= */
 
-@import url('landing/style.css');
-
-body {
-    background: #0b0e11;
-    background: radial-gradient(circle at 0% 0%, #161a2e 0%, #0b0e11 100%);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    font-family: 'Hind Siliguri', sans-serif;
-    color: #e2e8f0;
-    -webkit-font-smoothing: antialiased;
-}
-
-.navbar {
-    background: rgba(11, 14, 17, 0.8);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.shop-container {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    padding: 100px 0;
-}
-
-/* =========================
-   ELEGANT SHOP CARDS
-========================= */
-
-.shop-card {
-    position: relative;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 30px;
-    padding: 45px 30px;
-    text-align: center;
-    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
-    height: 100%;
-}
-
-/* Active Highlight (Elegant Semi-Red) */
-.shop-card:not(.coming-soon) {
-    transform: translateY(-10px);
-    background: linear-gradient(145deg, rgba(255, 59, 59, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-    border-color: rgba(255, 59, 59, 0.25);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-}
-
-.shop-card:hover {
-    transform: translateY(-18px) scale(1.02);
-    background: linear-gradient(145deg, rgba(255, 59, 59, 0.15) 0%, rgba(255, 59, 59, 0.05) 100%);
-    border-color: rgba(255, 59, 59, 0.6);
-    box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 59, 59, 0.1);
-}
-
-/* Icons Style */
-.card-icon {
-    width: 80px;
-    height: 80px;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 30px;
-    font-size: 36px;
-    color: #fff;
-    transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
-}
-
-.shop-card:not(.coming-soon) .card-icon {
-    background: rgba(255, 59, 59, 0.15);
-    color: #ff4d4d;
-    transform: rotate(6deg);
-}
-
-.shop-card:hover .card-icon {
-    background: #ff3b3b;
-    color: #fff;
-    transform: rotate(0deg) scale(1.15);
-    box-shadow: 0 15px 30px rgba(255, 59, 59, 0.3);
-}
-
-.shop-card h5 {
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: #fff;
-    font-size: 22px;
-}
-
-.shop-card p {
-    font-size: 15px;
-    color: rgba(255, 255, 255, 0.4);
-    margin-bottom: 30px;
-    font-weight: 500;
-}
-
-/* Button Refinement */
-.btn-shop {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
-    border-radius: 16px;
-    padding: 8px 22px;
-    font-weight: 600;
-    font-size: 14px;
-    transition: 0.4s;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.shop-card:not(.coming-soon) .btn-shop {
-    background: linear-gradient(135deg, #ff3b3b 0%, #b30000 100%);
-    border: none;
-    box-shadow: 0 10px 20px rgba(179, 0, 0, 0.2);
-}
-
-.shop-card:hover .btn-shop {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(179, 0, 0, 0.3);
-    background: linear-gradient(135deg, #ff5c5c 0%, #ff3b3b 100%);
-}
-
-/* =========================
-   COMING SOON & FOCUS
-========================= */
-
 .coming-soon {
     filter: grayscale(1) opacity(0.5);
     cursor: not-allowed;
@@ -144,9 +15,89 @@ body {
 .tiktok .card-icon { color: #ff3b5c !important; background: rgba(255, 59, 92, 0.1); }
 .shop-card.tiktok:hover .card-icon { background: #ff3b5c; color: #fff !important; }
 
-@media (max-width: 576px) {
-    .shop-container { padding: 40px 0; }
-    .shop-card { padding: 35px 20px; border-radius: 28px; }
-    .card-icon { width: 65px; height: 65px; font-size: 28px; }
-    .shop-card h5 { font-size: 18px; }
+/* =========================
+   FOOTER SECTION
+========================= */
+
+.footer {
+    background: rgba(11, 14, 17, 0.9);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.5);
+    padding: 30px 0;
+    margin-top: auto;
+}
+
+.footer-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.footer-link {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-link:hover {
+    color: #3b82f6;
+}
+
+/* =========================
+   GLOBAL DASHBOARD & NAVIGATION
+========================= */
+
+.bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #1e293b;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1100;
+    padding: 10px 0;
+}
+
+.bottom-nav-item {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    font-size: 0.8rem;
+    flex: 1;
+}
+
+.bottom-nav-item i { 
+    font-size: 1.3rem; 
+    display: block; 
+}
+
+.bottom-nav-item.active { 
+    color: #3b82f6; 
+}
+
+@media (max-width: 991px) {
+    .bottom-nav { 
+        display: flex; 
+    }
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    border-radius: 12px;
+    margin-bottom: 5px;
+    transition: 0.3s;
+}
+
+.sidebar-link:hover, .sidebar-link.active {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+}
+
+.sidebar-link i { 
+    margin-right: 15px; 
+    font-size: 1.2rem; 
 }
