@@ -33,61 +33,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $page_title = "Login - coinstore.bd";
-$root_path = '../';
-include '../includes/header.php';
+include 'user-header.php';
 ?>
 
-<div class="auth-body">
-<div class="auth-container">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-5">
-                <div class="auth-card">
-                    <div class="text-center mb-4">
-                        <a href="../all-services.php" class="auth-logo">🚀 CoinStore.bd</a>
-                        <h3 class="fw-bold mt-3 text-white">লগইন করুন</h3>
-                        <p class="text-white-50">আপনার একাউন্টে প্রবেশ করুন</p>
-                    </div>
+<div class="auth-card">
+    <div class="text-center mb-4">
+        <a href="../index.php" class="auth-logo">🚀 CoinStore.bd</a>
+        <h3 class="fw-bold mt-3 text-white">লগইন করুন</h3>
+        <p class="text-white-50">আপনার একাউন্টে প্রবেশ করুন</p>
+    </div>
 
-                    <?php echo $message; ?>
+    <?php echo $message; ?>
 
-                    <form action="login.php" method="POST">
-                        <div class="mb-3">
-                            <label class="form-label text-white-50">ইমেইল অথবা ফোন</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="bi bi-person"></i></span>
-                                <input type="text" name="identifier" class="form-control" placeholder="example@mail.com" required>
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label text-white-50">পাসওয়ার্ড</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                                <input type="password" name="password" class="form-control" placeholder="******" required>
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-between mb-4">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="remember">
-                                <label class="form-check-label text-white-50" for="remember">মনে রাখুন</label>
-                            </div>
-                            <a href="forgot_password.php" class="text-decoration-none main-color">পাসওয়ার্ড ভুলে গেছেন?</a>
-                        </div>
-
-                        <button type="submit" class="btn btn-main w-100 py-2 fs-5">লগইন</button>
-                    </form>
-
-                    <div class="text-center mt-4">
-                        <p class="text-white-50">একাউন্ট নেই? <a href="register.php" class="main-color text-decoration-none fw-bold">নতুন একাউন্ট খুলুন</a></p>
-                    </div>
-                </div>
+    <form action="login.php" method="POST">
+        <div class="mb-3">
+            <label class="form-label text-white-50">ইমেইল অথবা ফোন</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                <input type="text" name="identifier" class="form-control" placeholder="example@mail.com" required>
             </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
+        </div>
 
-            <?php include '../includes/footer.php'; ?>
+        <div class="mb-3">
+            <label class="form-label text-white-50">পাসওয়ার্ড</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                <input type="password" name="password" class="form-control" placeholder="******" required>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between mb-4">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="remember">
+                <label class="form-check-label text-white-50" for="remember">মনে রাখুন</label>
+            </div>
+            <a href="forgot_password.php" class="text-decoration-none main-color">পাসওয়ার্ড ভুলে গেছেন?</a>
+        </div>
+
+        <button type="submit" class="btn btn-main w-100 py-2 fs-5">লগইন</button>
+    </form>
+
+    <div class="text-center mt-4">
+        <p class="text-white-50">একাউন্ট নেই? <a href="register.php" class="main-color text-decoration-none fw-bold">নতুন একাউন্ট খুলুন</a></p>
+    </div>
+</div>
+
+<?php include 'user-footer.php'; ?>

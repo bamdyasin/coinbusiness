@@ -1,0 +1,8 @@
+/* user/assets/css/profile.css */
+.motivation-card {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+}

@@ -1,0 +1,89 @@
+/* user/assets/css/dashboard-home.css */
+.hero-box {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-radius: 24px;
+    padding: 40px;
+    border: 1px solid rgba(255,255,255,0.05);
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+.hero-box h1 { font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
+.hero-box h1 span { color: #3b82f6; }
+.hero-box p { font-size: 1.15rem; }
+
+.hero-card-img {
+    background: linear-gradient(180deg,#161c52,#0b1033);
+    border-radius: 25px;
+    padding: 15px;
+    border: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+}
+.hero-card-img img { width: 100%; border-radius: 15px; }
+
+.floating-badge-dark {
+    position: absolute; bottom: 10px; right: 10px;
+    background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px);
+    border: 2px solid #3b82f6; padding: 10px 15px; border-radius: 15px;
+    text-align: center; color: #fff;
+}
+.floating-badge-dark h4 { margin: 0; color: #10b981; font-weight: 800; }
+
+.stats-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 22px;
+    padding: 15px 10px;
+    backdrop-filter: blur(12px);
+}
+.stats-item {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 15px 10px;
+}
+.stats-item h3 { color: #00ff99; font-weight: 800; margin-bottom: 5px; }
+.stats-item p { font-size: 0.85rem !important; color: rgba(255,255,255,0.6); font-weight: 600; margin-bottom: 0; }
+
+.section-title-box { text-align: center; margin-bottom: 25px; }
+.section-title-box h2 { font-weight: 700; font-size: 1.8rem; position: relative; display: inline-block; padding-bottom: 10px; margin-bottom: 0; }
+.section-title-box h2::after { content: ""; width: 60px; height: 4px; background: #3b82f6; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 10px; }
+
+.list-item-row {
+    display: flex; align-items: center; gap: 20px; padding: 18px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: 0.3s;
+}
+.list-item-row:last-child { border-bottom: none; }
+
+.feature-icon-circle {
+    min-width: 55px; width: 55px; height: 55px;
+    background: rgba(59, 130, 246, 0.1); color: #3b82f6;
+    border-radius: 20px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; border: 1px solid rgba(59, 130, 246, 0.2);
+}
+.feature-icon-circle img { width: 32px; height: 32px; object-fit: contain; }
+
+.feature-text-box h6 { margin: 0 0 4px 0; font-weight: 700; color: #fff; font-size: 1.1rem; }
+.feature-text-box p { margin: 0; font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.4; }
+
+.package-price { color: rgba(255,255,255,0.7); font-weight: 600; font-size: 1rem; display: block; }
+.package-details-text { font-size: 0.9rem !important; color: rgba(255,255,255,0.5) !important; margin-top: 5px; line-height: 1.4; }
+
+.course-box-dark {
+    background: rgba(30, 41, 59, 0.7); border-radius: 24px; padding: 35px; border: 1px solid rgba(255,255,255,0.05);
+}
+.course-list-dark li { 
+    width: 100%; color: #fff; padding: 16px 20px; border-radius: 18px; font-size: 1.1rem;
+    box-shadow: 0 8px 20px rgba(123, 47, 247, 0.2); font-weight: 600; display: flex; align-items: center; margin-bottom: 15px;
+}
+.course-list-dark li:nth-child(odd) { background: linear-gradient(135deg, #7b2ff7, #2575fc); border-right: 5px solid rgba(255, 255, 255, 0.3); }
+.course-list-dark li:nth-child(even) { background: linear-gradient(135deg, #6a11cb, #a737ff); border-left: 5px solid rgba(255, 255, 255, 0.3); }
+
+.refund-card-dark {
+    border: 2px dashed rgba(59, 130, 246, 0.4); border-radius: 20px; padding: 25px; background: rgba(59, 130, 246, 0.05);
+}
+.refund-text { font-size: 1rem !important; color: rgba(255,255,255,0.7) !important; }
+
+.cta-dark {
+    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%); border-radius: 24px; padding: 50px 30px; text-align: center; margin-top: 40px;
+}
+@media (max-width: 991px) { .hero-box h1 { font-size: 1.8rem; } }

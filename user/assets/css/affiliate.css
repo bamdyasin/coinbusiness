@@ -1,0 +1,56 @@
+/* user/assets/css/affiliate.css */
+.promo-banner {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    border-radius: 24px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+.stat-box {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+}
+.ref-link-container {
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid #3b82f6;
+    border-radius: 16px;
+    padding: 10px 10px 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.ref-link-text {
+    color: #3b82f6;
+    font-family: monospace;
+    font-size: 1rem;
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.copy-btn {
+    background: #3b82f6;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    padding: 8px 20px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.table-custom {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+.table-custom tr { background: rgba(255, 255, 255, 0.03); }
+.table-custom td, .table-custom th { padding: 15px; vertical-align: middle; }
+.user-avatar {
+    width: 35px; height: 35px; border-radius: 8px; background: #3b82f6;
+    display: flex; align-items: center; justify-content: center; font-weight: bold;
+}
+@media (max-width: 576px) {
+    .promo-banner h2 { font-size: 1.5rem; }
+    .ref-link-text { font-size: 0.8rem; }
+}
