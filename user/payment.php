@@ -155,7 +155,7 @@ include '../includes/header.php';
                 <a href="premiumfiles.php" class="sidebar-link">
                     <i class="bi bi-cloud-arrow-down"></i> প্রিমিয়াম ফাইল
                 </a>
-                <a href="landingpage.php" class="sidebar-link" target="_blank">
+                <a href="../landing/index.php" class="sidebar-link" target="_blank">
                     <i class="bi bi-browser-safari"></i> ল্যান্ডিং পেজ
                 </a>
                 <a href="payment.php" class="sidebar-link active">

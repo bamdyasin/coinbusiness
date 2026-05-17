@@ -159,7 +159,7 @@ include '../includes/header.php';
                 <a href="../user/premiumfiles.php" class="sidebar-link">
                     <i class="bi bi-cloud-arrow-down"></i> প্রিমিয়াম ফাইল
                 </a>
-                <a href="../user/landingpage.php" class="sidebar-link" target="_blank">
+                <a href="../landing/index.php" class="sidebar-link" target="_blank">
                     <i class="bi bi-browser-safari"></i> ল্যান্ডিং পেজ
                 </a>
                 <a href="../user/payment.php" class="sidebar-link">
@@ -189,7 +189,7 @@ include '../includes/header.php';
                         <p class="text-white-80 mb-4 small">আপনার নেটওয়ার্ক ব্যবহার করে আয় বাড়ান। কোনো লিমিট নেই!</p>
                         <div class="d-flex gap-2">
                             <button class="btn btn-light btn-sm rounded-pill px-3 fw-bold text-primary copy-btn-banner" onclick="copyRefLink(this)">লিংক কপি</button>
-                            <a href="https://wa.me/?text=Hi, join CoinStore.bd! Link: <?php echo $full_base_url; ?>/landing/landingpage.php?ref=<?php echo $user['referral_code']; ?>" target="_blank" class="btn btn-success btn-sm rounded-pill px-3 fw-bold">
+                            <a href="https://wa.me/?text=Hi, join CoinStore.bd! Link: <?php echo $full_base_url; ?>/landing/index.php?ref=<?php echo $user['referral_code']; ?>" target="_blank" class="btn btn-success btn-sm rounded-pill px-3 fw-bold">
                                 <i class="bi bi-whatsapp me-1"></i>শেয়ার
                             </a>
                         </div>
@@ -232,7 +232,7 @@ include '../includes/header.php';
             <div class="app-card mb-4">
                 <h6 class="fw-bold mb-3">আপনার রেফারেল লিংক</h6>
                 <div class="ref-link-container" style="cursor: pointer;" onclick="copyRefLink(this.querySelector('.copy-btn'))">
-                    <span class="ref-link-text" id="refLinkText"><?php echo $full_base_url; ?>/landing/landingpage.php?ref=<?php echo $user['referral_code']; ?></span>
+                    <span class="ref-link-text" id="refLinkText"><?php echo $full_base_url; ?>/landing/index.php?ref=<?php echo $user['referral_code']; ?></span>
                     <button class="copy-btn btn-sm">
                         <i class="bi bi-copy"></i>
                     </button>

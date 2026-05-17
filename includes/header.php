@@ -212,7 +212,7 @@ if (isset($_GET['lang'])) {
 
 <header>
     <div class="logo">
-        <a href="<?php echo $root_path; ?>shop/TikTokTopUp.php">
+        <a href="<?php echo $root_path; ?>index.php">
             <img src="<?php echo $root_path; ?>assets/images/logo_1775895910.png" alt="CoinStore.bd Logo" style="height: 40px; width: auto; filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.4));">
         </a>
     </div>
@@ -244,7 +244,7 @@ if (isset($_GET['lang'])) {
             <li><a href="<?php echo $root_path; ?>shop/all-services.php"><i class="fas fa-home me-2"></i> হোম</a></li>
             <li><a href="<?php echo $root_path; ?>shop/TikTokTopUp.php?tab=promote"><i class="fas fa-bullhorn me-2"></i> প্রমোট</a></li>
             <li><a href="<?php echo $root_path; ?>shop/TikTokTopUp.php"><i class="fas fa-coins me-2"></i> কয়েন নিন</a></li>
-            <li><a href="<?php echo $root_path; ?>landing/landingpage.php"><i class="fas fa-briefcase me-2"></i> বিজনেস</a></li>
+            <li><a href="<?php echo $root_path; ?>landing/index.php"><i class="fas fa-briefcase me-2"></i> বিজনেস</a></li>
             <li><a href="#"><i class="fas fa-info-circle me-2"></i> আমাদের সম্পর্কে</a></li>
             <li><a href="#"><i class="fas fa-envelope me-2"></i> যোগাযোগ</a></li>
         </ul>
