@@ -6,17 +6,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px 0;
+    padding: 10px; /* STRICT: 10px padding */
 }
 .auth-card {
     background: rgba(30, 41, 59, 0.7);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    padding: 40px;
+    padding: 10px; /* STRICT: 10px padding */
     width: 100%;
     max-width: 500px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 576px) {
+    .auth-card { padding: 10px; }
 }
 .auth-logo { font-size: 2rem; font-weight: 800; color: #ffd700; text-decoration: none; }
 .main-color { color: #3b82f6; }
@@ -36,7 +40,7 @@ body {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: white;
-    padding: 12px;
+    padding: 10px; /* Reduced for consistency */
 }
 .form-control:focus {
     background: rgba(255, 255, 255, 0.08);

@@ -13,11 +13,11 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-top: none;
     border-radius: 0 0 20px 20px;
-    padding: 20px 30px;
+    padding: 10px; /* STRICT: 10px padding */
     position: sticky;
     top: 0;
     z-index: 1020;
-    margin-bottom: 2rem !important;
+    margin-bottom: 1rem !important;
     margin-left: -15px;
     margin-right: -15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
@@ -30,11 +30,11 @@ body {
 /* Sidebar Sticky */
 .sidebar-col {
     position: sticky;
-    top: 110px;
-    height: calc(100vh - 150px);
+    top: 100px;
+    height: calc(100vh - 120px);
     z-index: 1010;
     overflow-y: auto;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 
 .sidebar-col::-webkit-scrollbar { display: none; }
@@ -47,14 +47,15 @@ body {
     background: rgba(30, 41, 59, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    padding: 25px;
+    padding: 10px; /* STRICT: 10px padding */
     backdrop-filter: blur(10px);
 }
 
+/* Sidebar Link Styles */
 .sidebar-link {
     display: flex;
     align-items: center;
-    padding: 12px 20px;
+    padding: 10px; /* Reduced for consistency */
     color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     border-radius: 12px;
@@ -84,15 +85,14 @@ body {
 .bottom-nav-item i { font-size: 1.3rem; }
 
 .topbar-avatar {
-    width: 45px; height: 45px;
+    width: 40px; height: 45px;
     background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
     border-radius: 12px; display: flex; align-items: center; justify-content: center;
     font-weight: 800; font-size: 1.2rem; color: white;
-    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
 }
 
 .topbar-stat small { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; }
-.topbar-stat span { font-size: 1.1rem; }
+.topbar-stat span { font-size: 1rem; }
 
 /* Responsive Full Width logic */
 @media (max-width: 991px) { 
@@ -106,11 +106,12 @@ body {
         margin-right: 0 !important;
     }
     .main-content-col {
-        padding-left: 15px !important;
-        padding-right: 15px !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
         width: 100% !important;
     }
     .sidebar-col { display: none; } 
+    .app-card { padding: 10px; }
     .user-topbar { 
         position: sticky;
         top: 0;
@@ -120,14 +121,16 @@ body {
         border-radius: 0;
         border-left: none;
         border-right: none;
+        padding: 10px;
     }
 }
 
 @media (max-width: 576px) {
-    .user-topbar { padding: 15px 20px; }
+    .user-topbar { padding: 10px; }
     .topbar-stat.border-start { border-left: none !important; padding-left: 0 !important; }
     .main-content-col {
-        padding-left: 10px !important;
-        padding-right: 10px !important;
+        padding-left: 5px !important;
+        padding-right: 5px !important;
     }
+    .app-card { padding: 10px; }
 }

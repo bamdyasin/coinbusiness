@@ -68,7 +68,7 @@ $root_path = isset($root_path) ? $root_path : '../';
     <div class="row g-4">
         <!-- Sidebar -->
         <div class="col-lg-3 sidebar-col">
-            <div class="app-card p-3 shadow">
+            <div class="app-card shadow">
                 <?php $curr = basename($_SERVER['PHP_SELF']); ?>
                 <a href="dashboard.php" class="sidebar-link <?php echo ($curr == 'dashboard.php') ? 'active' : ''; ?>">
                     <i class="bi bi-speedometer2"></i> ড্যাশবোর্ড

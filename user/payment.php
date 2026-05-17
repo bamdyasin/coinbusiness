@@ -49,9 +49,9 @@ include 'user-header.php';
 
 <?php if ($user['payment_status'] == 'Paid'): ?>
     <!-- SUCCESS VIEW -->
-    <div class="app-card text-center py-5">
+    <div class="app-card text-center">
         <div class="mb-4">
-            <i class="bi bi-check-circle-fill text-success" style="font-size: 5rem;"></i>
+            <i class="bi bi-check-circle-fill text-success" style="font-size: 3rem;"></i>
         </div>
         <h2 class="fw-bold text-success mb-3">পেমেন্ট সফল হয়েছে!</h2>
         <p class="lead mb-4 px-lg-5">
@@ -94,7 +94,7 @@ include 'user-header.php';
                         </select>
 
                         <!-- Dynamic Detail Area -->
-                        <div id="method-details-box" class="mt-3 p-3 bg-primary bg-opacity-10 rounded-4 border border-primary border-opacity-25 d-none">
+                        <div id="method-details-box" class="mt-3 bg-primary bg-opacity-10 rounded-4 border border-primary border-opacity-25 d-none">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
                                     <div id="selected-type" class="extra-small text-info fw-bold mb-1" style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px;">Personal Transfer</div>

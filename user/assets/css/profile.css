@@ -2,7 +2,11 @@
 .motivation-card {
     background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
     border-radius: 20px;
-    padding: 30px;
+    padding: 10px; /* STRICT: 10px padding */
     position: relative;
     overflow: hidden;
+}
+@media (max-width: 576px) {
+    .motivation-card { padding: 10px; }
+    .motivation-card h2 { font-size: 1.3rem; }
 }

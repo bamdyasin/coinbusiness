@@ -1,30 +1,30 @@
 /* user/assets/css/affiliate.css */
 .promo-banner {
     background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-    border-radius: 24px;
-    padding: 30px;
-    margin-bottom: 30px;
+    border-radius: 20px;
+    padding: 10px; /* STRICT: 10px padding */
+    margin-bottom: 15px;
 }
 .stat-box {
     background: rgba(59, 130, 246, 0.1);
     border: 1px solid rgba(59, 130, 246, 0.2);
-    border-radius: 15px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 10px; 
     text-align: center;
 }
 .ref-link-container {
     background: rgba(15, 23, 42, 0.5);
     border: 1px solid #3b82f6;
-    border-radius: 16px;
-    padding: 10px 10px 10px 20px;
+    border-radius: 12px;
+    padding: 8px 10px; 
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 }
 .ref-link-text {
     color: #3b82f6;
     font-family: monospace;
-    font-size: 1rem;
+    font-size: 0.85rem;
     flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -33,24 +33,29 @@
 .copy-btn {
     background: #3b82f6;
     border: none;
-    border-radius: 12px;
+    border-radius: 8px;
     color: white;
-    padding: 8px 20px;
+    padding: 5px 10px; /* STRICT: 10px max */
     font-weight: 600;
     transition: 0.3s;
 }
 .table-custom {
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0 10px;
+    border-spacing: 0 5px;
 }
 .table-custom tr { background: rgba(255, 255, 255, 0.03); }
-.table-custom td, .table-custom th { padding: 15px; vertical-align: middle; }
+.table-custom td, .table-custom th { padding: 8px 10px; vertical-align: middle; }
 .user-avatar {
-    width: 35px; height: 35px; border-radius: 8px; background: #3b82f6;
-    display: flex; align-items: center; justify-content: center; font-weight: bold;
+    width: 30px; height: 30px; border-radius: 8px; background: #3b82f6;
+    display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem;
+}
+
+@media (max-width: 991px) {
+    .promo-banner { padding: 10px; }
 }
 @media (max-width: 576px) {
-    .promo-banner h2 { font-size: 1.5rem; }
-    .ref-link-text { font-size: 0.8rem; }
+    .promo-banner { padding: 10px; }
+    .promo-banner h2 { font-size: 1.2rem; }
+    .stat-box { padding: 10px; }
 }

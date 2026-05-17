@@ -2,11 +2,12 @@
 .step-count {
     width: 25px; height: 25px; background: #3b82f6; color: white; border-radius: 50%;
     display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem;
-    flex-shrink: 0; margin-right: 12px;
+    flex-shrink: 0; margin-right: 10px;
 }
 .method-card {
     background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px; padding: 12px; margin-bottom: 10px;
+    border-radius: 12px; padding: 10px; /* Reduced */
+    margin-bottom: 10px;
 }
 .form-select {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%233b82f6' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
@@ -16,5 +17,9 @@
 .motivation-card {
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     border-radius: 20px;
-    padding: 30px;
+    padding: 10px; /* STRICT: 10px padding */
+}
+@media (max-width: 576px) {
+    .motivation-card { padding: 10px; }
+    .motivation-card h4 { font-size: 1.1rem; }
 }
