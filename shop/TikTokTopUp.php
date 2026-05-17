@@ -4,6 +4,17 @@ $root_path = '../';
 include '../includes/header.php';
 ?>
 
+<style>
+    .hero-section {
+        position: relative;
+        padding: 0rem 0;
+        z-index: 1;
+    }
+    .mb-5 {
+        margin-bottom: 0rem!important;
+    }
+</style>
+
 <div class="container mt-4 mb-5">
     <div class="row g-4">
         <!-- Sidebar -->

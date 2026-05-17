@@ -241,7 +241,7 @@ if (isset($_GET['lang'])) {
             <i class="fas fa-times"></i>
         </div>
         <ul>
-            <li><a href="<?php echo $root_path; ?>shop/TikTokTopUp.php"><i class="fas fa-home me-2"></i> হোম</a></li>
+            <li><a href="<?php echo $root_path; ?>shop/all-services.php"><i class="fas fa-home me-2"></i> হোম</a></li>
             <li><a href="<?php echo $root_path; ?>shop/TikTokTopUp.php?tab=promote"><i class="fas fa-bullhorn me-2"></i> প্রমোট</a></li>
             <li><a href="<?php echo $root_path; ?>shop/TikTokTopUp.php"><i class="fas fa-coins me-2"></i> কয়েন নিন</a></li>
             <li><a href="<?php echo $root_path; ?>landing/landingpage.php"><i class="fas fa-briefcase me-2"></i> বিজনেস</a></li>

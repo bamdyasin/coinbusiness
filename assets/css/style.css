@@ -213,7 +213,7 @@ header {
 
 .sidebar-col {
     position: sticky;
-    top: 90px;
+    top: 80px;
     height: fit-content;
     z-index: 100;
 }

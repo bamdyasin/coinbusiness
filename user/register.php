@@ -93,7 +93,7 @@ include '../includes/header.php';
             <div class="col-md-6">
                 <div class="auth-card">
                     <div class="text-center mb-4">
-                        <a href="../TikTokTopUp.php" class="auth-logo">🚀 CoinStore.bd</a>
+                        <a href="../all-services.php" class="auth-logo">🚀 CoinStore.bd</a>
                         <h3 class="fw-bold mt-3 text-white">নতুন একাউন্ট</h3>
                         <p class="text-white-50">সঠিক তথ্য দিয়ে একাউন্ট তৈরি করুন</p>
                     </div>

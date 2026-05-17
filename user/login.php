@@ -44,7 +44,7 @@ include '../includes/header.php';
             <div class="col-md-5">
                 <div class="auth-card">
                     <div class="text-center mb-4">
-                        <a href="../TikTokTopUp.php" class="auth-logo">🚀 CoinStore.bd</a>
+                        <a href="../all-services.php" class="auth-logo">🚀 CoinStore.bd</a>
                         <h3 class="fw-bold mt-3 text-white">লগইন করুন</h3>
                         <p class="text-white-50">আপনার একাউন্টে প্রবেশ করুন</p>
                     </div>
