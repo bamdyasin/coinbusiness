@@ -2,9 +2,9 @@
 .hero-box {
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
     border-radius: 24px;
-    padding: 40px;
+    padding: 10px;
     border: 1px solid rgba(255,255,255,0.05);
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     position: relative;
     overflow: hidden;
 }

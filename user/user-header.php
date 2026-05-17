@@ -34,6 +34,37 @@ $root_path = isset($root_path) ? $root_path : '../';
 
 <?php if (isset($show_sidebar) && $show_sidebar): ?>
 <div class="container mt-4">
+    <?php if (isset($user)): ?>
+    <!-- User Topbar (Full Width) -->
+    <div class="user-topbar mb-4 shadow-sm">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <div class="d-flex align-items-center gap-3">
+                <div class="topbar-avatar">
+                    <?php echo strtoupper(substr($user['name'], 0, 1)); ?>
+                </div>
+                <div>
+                    <h5 class="mb-0 fw-bold"><?php echo $user['name']; ?></h5>
+                    <small class="text-white-50"><?php echo $user['phone']; ?></small>
+                </div>
+            </div>
+            <div class="d-flex align-items-center gap-4 flex-wrap">
+                <div class="topbar-stat">
+                    <small class="text-white-50 d-block">ব্যালেন্স</small>
+                    <span class="fw-bold text-success">৳<?php echo number_format($user['balance'], 0); ?></span>
+                </div>
+                <div class="topbar-stat border-start ps-4 border-secondary border-opacity-25">
+                    <small class="text-white-50 d-block">স্ট্যাটাস</small>
+                    <?php if ($user['payment_status'] == 'Paid'): ?>
+                        <span class="badge bg-warning text-dark rounded-pill px-3">Premium</span>
+                    <?php else: ?>
+                        <span class="badge bg-primary rounded-pill px-3 border border-primary border-opacity-25">Verified</span>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+
     <div class="row g-4">
         <!-- Sidebar -->
         <div class="col-lg-3 sidebar-col">
