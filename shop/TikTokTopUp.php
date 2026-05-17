@@ -1,10 +1,8 @@
 <?php
 $page_title = 'TikTok Top-Up';
-include 'header.php';
+$root_path = '../';
+include '../includes/header.php';
 ?>
-
-<!-- Shop Specific CSS -->
-<link rel="stylesheet" href="style.css">
 
 <div class="container mt-4 mb-5">
     <div class="row g-4">
@@ -312,4 +310,4 @@ include 'header.php';
     });
 </script>
 
-<?php include 'footer.php'; ?>
+<?php include '../includes/footer.php'; ?>

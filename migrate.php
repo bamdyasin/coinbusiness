@@ -128,7 +128,7 @@ if (mysqli_num_rows($check_admin) == 0) {
 
 echo "<hr>";
 echo "<b>Migration Complete!</b><br>";
-echo "<a href='index.php' class='btn btn-primary'>Go to Home</a> | <a href='admin/login.php'>Admin Login</a>";
+echo "<a href='TikTokTopUp.php' class='btn btn-primary'>Go to Home</a> | <a href='admin/login.php'>Admin Login</a>";
 
 mysqli_close($conn);
 ?>
