@@ -159,7 +159,7 @@ body {
 /* Budget Counter Styling */
 .budget-counter {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 15px;
@@ -167,15 +167,17 @@ body {
     overflow: hidden;
 }
 .counter-btn {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.1);
     border: none;
     color: white;
     padding: 10px;
     width: 50px;
-    height: 100%;
     font-size: 1.2rem;
     cursor: pointer;
     transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .counter-btn:hover {
     background: rgba(254, 44, 85, 0.2);
@@ -191,6 +193,16 @@ body {
     font-weight: 700;
     padding: 10px;
     outline: none;
+    width: 100%;
+}
+/* Remove Arrows from Number Input */
+.budget-input::-webkit-outer-spin-button,
+.budget-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.budget-input[type=number] {
+    -moz-appearance: textfield;
 }
 .hero-section {
     position: relative;
@@ -454,7 +466,78 @@ footer {
     100% { transform: scale(1); opacity: 1; }
 }
 
-@media (max-width: 768px) {
-    footer { padding: 40px 0 20px; }
-    .footer-content { gap: 30px; }
+/* Custom Accordion */
+.custom-accordion .accordion-item {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+.custom-accordion .accordion-button:not(.collapsed) {
+    background: transparent;
+    color: #fe2c55 !important;
+}
+/* Custom FAQ Item Style */
+.faq-item {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0;
+    border-radius: 12px !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.faq-item:has(.accordion-button:not(.collapsed)) {
+    border-left: 4px solid #fe2c55 !important;
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.custom-accordion .accordion-button::after {
+    filter: invert(1) brightness(2);
+}
+
+.custom-accordion .accordion-body {
+    padding-top: 0 !important;
+}
+
+/* Testimonial Cards */
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: 0.3s;
+}
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(254, 44, 85, 0.3);
+}
+.stars {
+    color: #ffc107;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+.avatar-sm {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+.bg-tiktok {
+    background: linear-gradient(45deg, #fe2c55, #25f4ee);
+}
+.italic {
+    font-style: italic;
+}
+.text-truncate-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.accordion-button:not(.collapsed) .faq-preview {
+    display: none;
+}
+
+.custom-accordion .accordion-button {
+    text-align: left;
 }

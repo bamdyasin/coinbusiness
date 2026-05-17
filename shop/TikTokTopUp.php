@@ -144,9 +144,101 @@ include 'header.php';
                 </ul>
             </div>
 
-        </div>
-    </div>
-</div>
+            <!-- FAQ Section -->
+            <div class="app-card shadow-lg mt-5">
+                <h4 class="fw-bold text-white mb-4"><i class="bi bi-question-circle text-tiktok-sm me-2"></i> গ্রাহকদের সাধারণ প্রশ্নাবলী</h4>
+                <div class="accordion accordion-flush custom-accordion" id="faqAccordion">
+                    <div class="accordion-item faq-item mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed bg-transparent text-white fw-bold px-3 py-3 shadow-none d-block" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                <div>(বুস্ট করুন) অপশন কাদের জন্য?</div>
+                                <div class="faq-preview text-white-50 small fw-normal mt-1 text-truncate-1">যারা ভিডিও বুস্ট করার বিষয়ে কিছুই জানেন না (বুস্ট করুন) অপশন তাদের জন্য। আপনি পেমেন্ট করার পর আপনার ভিডিও লিংক ও পেমেন্ট ইনফো সাবমিট করবেন...</div>
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-white-50 px-3 pt-0">
+                                যারা ভিডিও বুস্ট করার বিষয়ে কিছুই জানেন না (বুস্ট করুন) অপশন তাদের জন্য। আপনি পেমেন্ট করার পর আপনার ভিডিও লিংক ও পেমেন্ট ইনফো সাবমিট করবেন এরপর বাকি সমস্ত কাজ আমরা সততা, দক্ষতা এবং আন্তরিকতার সাথে সম্পন্ন করব।
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item faq-item mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed bg-transparent text-white fw-bold px-3 py-3 shadow-none d-block" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                <div>(কয়েন নিন) অপশন কাদের জন্য?</div>
+                                <div class="faq-preview text-white-50 small fw-normal mt-1 text-truncate-1">যারা নিজের ভিডিও নিজেই বুস্ট করতে পারেন বা শুধুমাত্র কয়েন নিতে চান তাদের জন্য (কয়েন নিন) অপসন।</div>
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-white-50 px-3 pt-0">
+                                যারা নিজের ভিডিও নিজেই বুস্ট করতে পারেন বা শুধুমাত্র কয়েন নিতে চান তাদের জন্য (কয়েন নিন) অপসন।
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item faq-item mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed bg-transparent text-white fw-bold px-3 py-3 shadow-none d-block" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                <div>আমাদের থেকে কেন সার্ভিস নিবেন?</div>
+                                <div class="faq-preview text-white-50 small fw-normal mt-1 text-truncate-1">আমরা সততা, দক্ষতা এবং আন্তরিকতার সাথে গ্রাহকের দেয়া কাজ সঠিক সময়ে সম্পন্ন করে থাকি। তাই ১০০% নিশ্চিন্তে...</div>
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-white-50 px-3 pt-0">
+                                আমরা সততা, দক্ষতা এবং আন্তরিকতার সাথে গ্রাহকের দেয়া কাজ সঠিক সময়ে সম্পন্ন করে থাকি। তাই ১০০% নিশ্চিন্তে ও নিরাপদে আপনি আমাদের থেকে সার্ভিস নিতে পারেন।
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials Section -->
+            <div class="app-card shadow-lg mt-5 mb-5">
+                <h4 class="fw-bold text-white mb-4"><i class="bi bi-chat-heart text-tiktok-sm me-2"></i> গ্রাহকদের মতামত</h4>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="testimonial-card h-100 p-4 rounded-4">
+                            <div class="stars mb-2">★★★★★</div>
+                            <p class="text-white-50 small italic mb-3">"আলহামদুলিল্লাহ, তাদের সার্ভিস অনেক ভালো। আমি তাদের থেকে একাধিক বার সার্ভিস নিয়েছি। Highly recommended."</p>
+                            <div class="d-flex align-items-center">
+                                <div class="avatar-sm bg-tiktok text-white rounded-circle me-2 d-flex align-items-center justify-content-center">T</div>
+                                <div>
+                                    <h6 class="mb-0 text-white small fw-bold">Tanvir Ahmed</h6>
+                                    <small class="text-tiktok-sm" style="font-size: 0.7rem;">প্রমোট কাস্টমার</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="testimonial-card h-100 p-4 rounded-4">
+                            <div class="stars mb-2">★★★★★</div>
+                            <p class="text-white-50 small italic mb-3">"ওনাদের সার্ভিস অনেক ভালো। ৫ মিনিটের মধ্যে coin দিয়ে দেয়। আপনারা চাইলে ওনাদের থেকে কয়েন নিতে পারেন। সার্ভিস ভালো পাবেন আশাকরি।"</p>
+                            <div class="d-flex align-items-center">
+                                <div class="avatar-sm bg-tiktok text-white rounded-circle me-2 d-flex align-items-center justify-content-center">R</div>
+                                <div>
+                                    <h6 class="mb-0 text-white small fw-bold">Rahat Kabir</h6>
+                                    <small class="text-tiktok-sm" style="font-size: 0.7rem;">কয়েন কালেক্টর</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="testimonial-card h-100 p-4 rounded-4">
+                            <div class="stars mb-2">★★★★☆</div>
+                            <p class="text-white-50 small italic mb-3">"অনেক ভালো business রিলিটেড সাপোর্ট দিয়ে থাকে। খুঁটিনাটি ও সিক্রেট বিষয়ে সহজ ভাবে আলোচনা করে. ওনাদের টিম পারদর্শী। আমি ১০০% রিকোমেন্ড করি।"</p>
+                            <div class="d-flex align-items-center">
+                                <div class="avatar-sm bg-tiktok text-white rounded-circle me-2 d-flex align-items-center justify-content-center">S</div>
+                                <div>
+                                    <h6 class="mb-0 text-white small fw-bold">Sultana Kamal</h6>
+                                    <small class="text-tiktok-sm" style="font-size: 0.7rem;">কনসালটেন্সি হোল্ডার</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+            </div>
+            </div>
 
 <script>
     const paymentData = {
